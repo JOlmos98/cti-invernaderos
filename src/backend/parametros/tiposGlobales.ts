@@ -11,6 +11,7 @@ export enum TP  {
      LIST,     
 } 
 
+// Así funciona internamente el enum:
 // export const INTEGER=0;
 // export const REAL=1;
 // export const STRING=2;
@@ -30,7 +31,6 @@ export interface IParam {
      reset:number,
      tipoImportacion:number,
      nombre:string
-
 }
 
 export interface BParam {
@@ -40,8 +40,6 @@ export interface BParam {
      reset:number,
      tipoImportacion:number,
      nombre:string
-
-     
 }
 
 export interface SParam {
@@ -51,6 +49,4 @@ export interface SParam {
      reset:number,
      tipoImportacion:number,
      nombre:string
-
-     
 }
