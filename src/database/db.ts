@@ -21,6 +21,7 @@ export async function setData() {
      return user;
 }
 
+//GETDATA
 export async function getData() {
      console.log('getData');
      const users = await prisma.user.findMany();
