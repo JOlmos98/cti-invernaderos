@@ -2,22 +2,16 @@ import prisma from "@/lib/prisma";
 import { Parametros1 } from "@prisma/client";
 import { BParam, IParam, SParam, TP } from "./tiposGlobales";
 
-
-
 const idCounter = {
      counter: BigInt(0),
      level: 0
 }
-
-
 
 const incGeneral: number = 4294967296; //+9 - 32bits
 const inRepeticion1: number = 8388608; //+6 - 23bits
 const incRepeticion2: number = 131072; //+6 - 17bits
 const incRepeticion3: number = 2048;   //+4 - 11bits
 const incRepeticion4: number = 128;    //+0    7bit
-
-
 
 export const loadParam4 = async (param:  IParam | BParam|SParam, inicializacion: { tipo: number, min?: number, max?: number, valor: number | boolean | string, reset: number; tipoImportacion: number, nombre: string }) => {
 

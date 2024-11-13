@@ -9,9 +9,11 @@ import { TP } from './tiposGlobales';
 
 
 
-//Carga de datos de todos los datos
-
-
+//Carga de todos los datos
+/*
+     Con esta función, una vez construidos los objetos calefaccion:calefaccionDto2, 
+     se cargarán los datos en sus parámetros con el método loadParam4.
+*/
 export const LoadingAllParams = () => {
 
      

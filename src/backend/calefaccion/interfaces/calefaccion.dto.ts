@@ -1,15 +1,8 @@
 import { BParam, IParam, SParam, TP as TipoParametro } from "@/backend/parametros/tiposGlobales";
 
-
-
 //No utilizada
 class CafelaccionInfluenciaHumedadDto {
-
 }
-
-
-
-
 
 export class CalefaccionDto2 {
      tempSinConectarCR:IParam;
@@ -81,8 +74,6 @@ class CalefaccionConfiguracionDto2 {
           this.alarmaOnOff = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
           this.numeroPulsosSaltaAlarma = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.numeroPulsosSaltaAlarma = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
-
-
      }
 
 } 

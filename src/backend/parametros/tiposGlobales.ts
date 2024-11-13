@@ -11,7 +11,7 @@ export enum TP  {
      LIST,     
 } 
 
-// Así funciona internamente el enum:
+//Así funciona internamente el enum:
 // export const INTEGER=0;
 // export const REAL=1;
 // export const STRING=2;
@@ -23,8 +23,8 @@ export enum TP  {
 
 //Tipos de parámetros
 export interface IParam {
-     id:bigint,
-     tipo:TP,
+     id:bigint, //bigint es como long en Java
+     tipo:TP, //Este es nuestro tipo creado
      min:number,
      max:number,
      valor:number,
@@ -33,6 +33,7 @@ export interface IParam {
      nombre:string
 }
 
+//Estas dos interfaces no son valor:number ni tienen max y min, el resto de info es igual
 export interface BParam {
      id:bigint,
      tipo:TP,
