@@ -1,9 +1,11 @@
 'use server'
+//Esto es el actions.ts que suele estar en lib/actions.ts (Comprobar estructura por convención)
 
 import prisma from "@/lib/prisma";
 
 // const prisma = new PrismaClient();
 
+//PARECE QUE ESTA FUNCION NO SIRVE, LA BUENA ES setData2.
 export async function setData() {
      console.log('setData');
      const user = await prisma.user.create({
@@ -26,6 +28,7 @@ export async function getData() {
      return users;
 }
 
+//PARECE QUE ESTA FUNCION ES LA BUENA
 export const setData2 = async (formData: FormData) => {
 
      const name = formData.get('name');
@@ -44,7 +47,6 @@ export const setData2 = async (formData: FormData) => {
           },
      });
 
-
 }
 
 export const delData = async (formData: FormData) => {
@@ -52,7 +54,6 @@ export const delData = async (formData: FormData) => {
      console.log('delData parametro', id)
      const idx = Number(id);
 
-  
      try {
           // const isdata =await prisma.user.findFirst({ where: { id: Number(id) } })
           // if (!isdata) {
@@ -100,7 +101,5 @@ export const delDataId = async (id: number) => {
 
      //      )   
      // console.log('response',response)
-
-
 
 }
