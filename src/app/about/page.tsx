@@ -3,7 +3,7 @@
 'use client'
 
 
-import { delData, delDataId, getData, setData, setData2 } from '@/database/db';
+import { delData, delDataId, getData, setData2 } from '@/database/db';
 import { useEffect } from 'react';
 import {toast} from 'react-hot-toast';
 
@@ -22,7 +22,7 @@ export default function About() {
   //   doSetData();
   // }, []);
 
-  async function clientDelData(formData: FormData) {    
+  /*async function clientDelData(formData: FormData) {    
     console.log('deleting data...');
     const result=await delData(formData);
     if (result?.error) {
@@ -35,7 +35,7 @@ export default function About() {
     else{
       toast.success('User deleted successfully');
     }
-  }
+  }*/
 
   return (
     <div >
@@ -51,7 +51,7 @@ export default function About() {
         </form>
         <button className="bg-blue-300 p-2 rounded-md font-bold" onClick={getData}> listar</button>
         <div className='mt-10'>
-          <form action={clientDelData} className='flex  flex-col w-200 items-center justify-center gap-2'>
+          <form action={delData} className='flex  flex-col w-200 items-center justify-center gap-2'>
             <input type="Text" name="id" placeholder='id to delete'  className='bg-slate-200'/>
             <button type="submit" className='bg-red-200 p-2 rounded-md'>Delete</button>
           </form>

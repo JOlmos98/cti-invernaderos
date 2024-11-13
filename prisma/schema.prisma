@@ -40,8 +40,6 @@ model Post {
   authorId  Int
 }
 
-
-
 model Parameters {
   pkid Int @id @default(autoincrement())
   id Int 

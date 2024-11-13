@@ -6,7 +6,7 @@ import prisma from "@/lib/prisma";
 // const prisma = new PrismaClient();
 
 //PARECE QUE ESTA FUNCION NO SIRVE, LA BUENA ES setData2.
-export async function setData() {
+/*export async function setData() {
      console.log('setData');
      const user = await prisma.user.create({
           data: {
@@ -19,7 +19,7 @@ export async function setData() {
      });
      console.log(`Created user ${user.name} with ID: ${user.id}`);
      return user;
-}
+}*/
 
 //GETDATA
 export async function getData() {
@@ -52,26 +52,58 @@ export const setData2 = async (formData: FormData) => {
 
 export const delData = async (formData: FormData) => {
      const id = formData.get('id');
+     if (!id) {
+       console.error('No ID provided for deletion');
+       return; // Detener la ejecución si no se proporciona un id
+     }
+   
+     const idx = Number(id);  // Convertimos el id a número
+     if (isNaN(idx)) {
+       console.error('Invalid ID provided');
+       return; // Detener si el id no es un número válido
+     }
+   
+     try {
+       // Intentamos eliminar al usuario con el id proporcionado
+       const response = await prisma.user.delete({
+         where: {
+           id: idx,  // Utilizamos el id para eliminar el usuario
+         },
+       });
+       console.log(`Usuario con id: ${idx} eliminado correctamente`);
+     } catch (error) {
+       console.error(`Error eliminando el usuario con id: ${idx}`, error);
+       // No es necesario devolver nada, pero podrías mostrar un mensaje si lo necesitas
+     }
+   };
+   
+
+/*export const delData = async (formData: FormData) => {
+     const id = formData.get('id');
      console.log('delData parametro', id)
      const idx = Number(id);
 
-     try {
+     //const users = await prisma.user.findMany();
+
+     const response = await prisma.user.delete({
+          where: {
+               id: idx,
+          }
+     })
+     console.log("Eliminado usuario con id: ", idx)
+     //try {
           // const isdata =await prisma.user.findFirst({ where: { id: Number(id) } })
           // if (!isdata) {
           //      console.error('Error deleting user:', id)
           //      return;
           // }
           // console.log('response', response)
-          const response = await prisma.user.delete({
-               where: {
-                    id: idx,
-               }
-          })
-     } catch (error) {
+
+     //} catch (error) {
           //console.error('Error deleting user:', error)
           // throw new Error(`Error deleting user: ${error}`);
-          return { error: `Error deleting user: ${error}` }
-     }
+          //return { error: `Error deleting user: ${error}` }
+     //}
      // const response=await prisma.user.delete({ where: { id: Number(id) } })
      //      .catch(
      //           ((error) => { console.error('Error deleting user:', error) })
@@ -79,7 +111,7 @@ export const delData = async (formData: FormData) => {
      //      )   
      // console.log('response',response)
 
-}
+}*/
 
 
 export const delDataId = async (id: number) => {
