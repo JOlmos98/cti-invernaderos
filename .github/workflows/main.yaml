@@ -2,8 +2,10 @@ name: Test and Log
 
 on:
   push:
-    branches: [ main ]
-
+    branches: 
+      - main
+      - develop
+      - backend/verify-emailUser-idUser
 jobs:
   test:
     runs-on: ubuntu-latest
