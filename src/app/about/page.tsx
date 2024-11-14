@@ -6,7 +6,7 @@ import { delData, getData, setData } from '@/lib/actions';
 
 export default function About() {
 
-  console.log('setting data3...');
+  //console.log('setting data3...');
   // useEffect(() => {
 
   //   const doSetData = async () => {
@@ -37,23 +37,27 @@ export default function About() {
       <p> About!!</p>
       <div className='flex  flex-col w-200 items-center justify-center gap-2'>
         <form action={setData} className='flex  flex-col w-200 items-center justify-center gap-2' >
-          <input type="Text" name="name" placeholder="Name"  className='bg-slate-200'/>
-          <input type="email" name="email" placeholder="Email" className='bg-slate-200'/>
-          <input type="password" name="password" placeholder="Password" className='bg-slate-200' />          
+          <input type="Text" name="name" placeholder="Name"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="email" name="email" placeholder="Email" className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300' />          
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
-          <button type="submit" className='bg-red-200 p-2 rounded-md'>Submit</button>
-
+          <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Submit</button>
         </form>
-        <button className="bg-blue-300 p-2 rounded-md font-bold" onClick={getData}> listar</button>
+        <button className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" onClick={getData}>Listar usuarios</button>
         <div className='mt-10'>
           <form action={delData} className='flex  flex-col w-200 items-center justify-center gap-2'>
-            <input type="Text" name="id" placeholder='id to delete'  className='bg-slate-200'/>
-            <button type="submit" className='bg-red-200 p-2 rounded-md'>Delete</button>
+            <input type="number" name="id" placeholder='id to delete'  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+            <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Delete</button>
+            <br />
           </form>
         </div>
         <div>
-          <button className="bg-blue-300 p-2 rounded-md font-bold" /*onClick={/</div>async ()=>{const response=await delDataId(1); alert(response)}}*/> boton action eliminado</button>
-        </div>
+        <form /*action={setData}*/ className='flex  flex-col w-200 items-center justify-center gap-2' >
+          <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
+          <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Comprobar existencia</button>
+        </form>        </div>
       </div>
       
     </div>
