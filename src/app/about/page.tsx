@@ -2,12 +2,7 @@
 
 'use client'
 
-
-import { delData, delDataId, getData, setData2 } from '@/database/db';
-import { useEffect } from 'react';
-import {toast} from 'react-hot-toast';
-
-
+import { delData, getData, setData } from '@/database/actions';
 
 export default function About() {
 
@@ -41,7 +36,7 @@ export default function About() {
     <div >
       <p> About!!</p>
       <div className='flex  flex-col w-200 items-center justify-center gap-2'>
-        <form action={setData2} className='flex  flex-col w-200 items-center justify-center gap-2' >
+        <form action={setData} className='flex  flex-col w-200 items-center justify-center gap-2' >
           <input type="Text" name="name" placeholder="Name"  className='bg-slate-200'/>
           <input type="email" name="email" placeholder="Email" className='bg-slate-200'/>
           <input type="password" name="password" placeholder="Password" className='bg-slate-200' />          
@@ -57,7 +52,7 @@ export default function About() {
           </form>
         </div>
         <div>
-          <button className="bg-blue-300 p-2 rounded-md font-bold" onClick={async ()=>{const response=await delDataId(1); alert(response)}}> action</button>
+          <button className="bg-blue-300 p-2 rounded-md font-bold" /*onClick={/</div>async ()=>{const response=await delDataId(1); alert(response)}}*/> boton action eliminado</button>
         </div>
       </div>
       

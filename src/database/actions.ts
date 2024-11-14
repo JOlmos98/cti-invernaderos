@@ -3,25 +3,7 @@
 
 import prisma from "@/lib/prisma";
 
-// const prisma = new PrismaClient();
-
-//PARECE QUE ESTA FUNCION NO SIRVE, LA BUENA ES setData2.
-/*export async function setData() {
-     console.log('setData');
-     const user = await prisma.user.create({
-          data: {
-               name: 'Alice',
-               email: 'alice@prisma.io',
-               posts: {
-                    create: { title: 'Join us for Prisma Day 2020' },
-               },
-          },
-     });
-     console.log(`Created user ${user.name} with ID: ${user.id}`);
-     return user;
-}*/
-
-//GETDATA
+// -------------------------------------------------- getData --------------------------------------------------
 export async function getData() {
      console.log('getData');
      const users = await prisma.user.findMany();
@@ -29,9 +11,8 @@ export async function getData() {
      return users;
 }
 
-//PARECE QUE ESTA FUNCION ES LA BUENA
-export const setData2 = async (formData: FormData) => {
-
+// -------------------------------------------------- setData --------------------------------------------------
+export const setData = async (formData: FormData) => {
      const name = formData.get('name');
      const password = formData.get('password');
      const email = formData.get('email');
@@ -47,36 +28,68 @@ export const setData2 = async (formData: FormData) => {
                },
           },
      });
-
 }
 
+// -------------------------------------------------- delData --------------------------------------------------
 export const delData = async (formData: FormData) => {
      const id = formData.get('id');
-     if (!id) {
-       console.error('No ID provided for deletion');
-       return; // Detener la ejecución si no se proporciona un id
+     const idx = Number(id);
+     const userExists = await prisma.user.findUnique({ where: { id: idx } });
+     
+     if (!userExists) {
+          console.error('EL USUARIO "', id, '" NO EXISTE.');
+     } else {
+          try{
+               const response = await prisma.user.delete({
+                    where: {
+                        id: idx,
+                    },
+                });
+                console.log("Usuario", idx, "eliminado correctamente");
+               } catch (error) { console.error('Error al eliminar usuario: Probablemente no existe el usuario o es NaN.', error);}
+          };
      }
-   
-     const idx = Number(id);  // Convertimos el id a número
-     if (isNaN(idx)) {
-       console.error('Invalid ID provided');
-       return; // Detener si el id no es un número válido
-     }
-   
-     try {
-       // Intentamos eliminar al usuario con el id proporcionado
-       const response = await prisma.user.delete({
-         where: {
-           id: idx,  // Utilizamos el id para eliminar el usuario
-         },
-       });
-       console.log(`Usuario con id: ${idx} eliminado correctamente`);
-     } catch (error) {
-       console.error(`Error eliminando el usuario con id: ${idx}`, error);
-       // No es necesario devolver nada, pero podrías mostrar un mensaje si lo necesitas
-     }
-   };
-   
+     //console.log("1. Aqui tenemos: ", id, typeof id, idx, typeof idx);
+
+     //console.log(`1. id: ${id}, idx: ${idx}`);
+     //const userExists = await prisma.user.findUnique({ where: { id: idx } });
+     //console.log(`2. Usuario existe: ${userExists ? 'Sí' : 'No'}`);
+
+     //if (isNaN(idx)) {
+         //console.error('Invalid ID provided (not a number)', { id });
+         //return;
+     //}
+     //try {
+         // Eliminamos el usuario usando el id convertido a número
+
+         //console.log("4. Aqui tenemos: ", id, typeof id, idx, typeof idx);
+
+         //console.log(`Usuario con id: ${idx} eliminado correctamente`);
+     //} catch (error) {
+         //console.error(`Error eliminando el usuario con id: ${idx}`, error);
+         //console.log("5. Aqui tenemos: ", id, typeof id, idx, typeof idx);
+     //}
+
+// --------------------------------------------------
+
+//const prisma = new PrismaClient();
+//PARECE QUE ESTA FUNCION NO SIRVE, LA BUENA ES setData2.
+/*export async function setData1() {
+     console.log('setData');
+     const user = await prisma.user.create({
+          data: {
+               name: 'Alice',
+               email: 'alice@prisma.io',
+               posts: {
+                    create: { title: 'Join us for Prisma Day 2020' },
+               },
+          },
+     });
+     console.log(`Created user ${user.name} with ID: ${user.id}`);
+     return user;
+}*/
+
+// --------------------------------------------------
 
 /*export const delData = async (formData: FormData) => {
      const id = formData.get('id');
@@ -110,11 +123,11 @@ export const delData = async (formData: FormData) => {
 
      //      )   
      // console.log('response',response)
-
 }*/
 
+// --------------------------------------------------
 
-export const delDataId = async (id: number) => {
+/*export const delDataId = async (id: number) => {
 
      console.log('delData parametro', id)
      try {
@@ -134,5 +147,4 @@ export const delDataId = async (id: number) => {
 
      //      )   
      // console.log('response',response)
-
-}
+}*/

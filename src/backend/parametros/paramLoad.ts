@@ -13,7 +13,7 @@ const incRepeticion2: number = 131072; //+6 - 17bits
 const incRepeticion3: number = 2048;   //+4 - 11bits
 const incRepeticion4: number = 128;    //+0    7bit
 
-export const loadParam4 = async (param:  IParam | BParam|SParam, inicializacion: { tipo: number, min?: number, max?: number, valor: number | boolean | string, reset: number; tipoImportacion: number, nombre: string }) => {
+export const loadParam = async (param: IParam | BParam|SParam, inicializacion: { tipo: number, min?: number, max?: number, valor: number | boolean | string, reset: number; tipoImportacion: number, nombre: string }) => {
 
      let xvalor: string = "";
      const xidc: bigint = idc();
@@ -69,6 +69,7 @@ export const loadParam4 = async (param:  IParam | BParam|SParam, inicializacion:
           xvalor = result.valor; //segun el tipo          
      }
 
+     //Este if, según el TP de la variable, establece la variable valor:number||boolean||string
      switch (inicializacion.tipo) {
           case TP.INTEGER|TP.REAL:
                (param as IParam).valor = Number(xvalor);  //el condicinal hay que trabajarlo. El valor siempre existira
@@ -83,16 +84,18 @@ export const loadParam4 = async (param:  IParam | BParam|SParam, inicializacion:
 
 }
 
-export const idc = (): bigint => {
 
-     return idCounter.counter++;
+
+// -------------------------------------------------- Aquí se generan los ID con el CounterLevel 
+
+export const idc = (): bigint => { 
+     return idCounter.counter++; //Esta función devuelve la propiedad counter de idCounter incrementado en 1.
 }
 
 export const setCounterLevel = (level: number): void => {
 
      idCounter.level = level;
      
-
      switch (idCounter.level) {
           case 0: idCounter.counter = idCounter.counter & BigInt(0xFFFFF00000000); break;  //+9 - 32bits
           case 1: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFF800000); break;  //+6 - 23bits
@@ -102,7 +105,6 @@ export const setCounterLevel = (level: number): void => {
           default: break;
      }
 
-
      switch (idCounter.level) {
           case 0: idCounter.counter += BigInt(incGeneral); break;
           case 1: idCounter.counter += BigInt(inRepeticion1); break;
@@ -111,6 +113,5 @@ export const setCounterLevel = (level: number): void => {
           case 4: idCounter.counter += BigInt(incRepeticion4); break;
           default: break;
      }
-
 
 }
