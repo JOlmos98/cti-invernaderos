@@ -2,7 +2,7 @@
 
 'use client'
 
-import { delData, getData, setData } from '@/database/actions';
+import { delData, getData, setData } from '@/lib/actions';
 
 export default function About() {
 

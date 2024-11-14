@@ -2,6 +2,7 @@
 //Esto es el actions.ts que suele estar en lib/actions.ts (Comprobar estructura por convención)
 
 import prisma from "@/lib/prisma";
+import bcrypt from 'bcrypt';
 
 // -------------------------------------------------- getData --------------------------------------------------
 export async function getData() {
@@ -14,8 +15,12 @@ export async function getData() {
 // -------------------------------------------------- setData --------------------------------------------------
 export const setData = async (formData: FormData) => {
      const name = formData.get('name');
-     const password = formData.get('password');
      const email = formData.get('email');
+     const password = formData.get('password') as string;
+     
+     //Hasheamos la password con 10 rondas de sal
+     const saltRounds = 10;
+     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
      console.log({ name, password })
      console.log(formData);
@@ -23,9 +28,7 @@ export const setData = async (formData: FormData) => {
           data: {
                name: name as string,
                email: email as string,
-               posts: {
-                    create: { title: 'Join us for Prisma Day 2020' + { password } },
-               },
+               password: hashedPassword, //Metemos el hash
           },
      });
 }

@@ -28,17 +28,18 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  posts Post[]
+  password String @default("Sin password")
+  //posts Post[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)  
-  authorId  Int
-}
+//model Post {
+  //id        Int     @id @default(autoincrement())
+  //title     String
+  //content   String?
+  //published Boolean @default(false)
+  //author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)  
+  //authorId  Int
+//}
 
 model Parameters {
   pkid Int @id @default(autoincrement())
