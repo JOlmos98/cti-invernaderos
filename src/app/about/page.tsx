@@ -2,7 +2,7 @@
 
 'use client'
 
-import { delData, getData, setData } from '@/lib/actions';
+import { delData, getData, setData, verifyUser } from '@/lib/actions';
 
 export default function About() {
 
@@ -52,12 +52,13 @@ export default function About() {
           </form>
         </div>
         <div>
-        <form /*action={setData}*/ className='flex  flex-col w-200 items-center justify-center gap-2' >
+        <form action={verifyUser} className='flex  flex-col w-200 items-center justify-center gap-2' >
           <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
           <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300'/>
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
           <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Comprobar existencia</button>
-        </form>        </div>
+        </form>        
+        </div>
       </div>
       
     </div>

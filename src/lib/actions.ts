@@ -52,6 +52,27 @@ export const delData = async (formData: FormData) => {
                } catch (error) { console.error('Error al eliminar usuario: Probablemente no existe el usuario o es NaN.', error);}
           };
      }
+
+// -------------------------------------------------- verifyUser --------------------------------------------------
+export const verifyUser = async (formData: FormData) => {
+     const id = formData.get('id');
+     const password = formData.get('password') as string;
+     console.log("1. Aqui tenemos el id:", id, typeof id, "\nY la password:", password, typeof password);
+     const idNum = Number(id);
+     const userExists = await prisma.user.findUnique({ where: { id: idNum } });
+
+     if (userExists) {
+          const isPasswordCorrect = await bcrypt.compare(password, userExists.password); //Esta línea compara la password introducida hasheada con la que está en la DB también hasheada.
+          console.log("El usuario con id", id, "existe:", userExists, "\nSu nombre es: ", userExists.name);
+
+          if (isPasswordCorrect) {
+               console.log("La contraseña es correcta");
+          } else {console.error("La contraseña es incorrecta");}
+     } else {console.error("El usuario con id", id, "NO existe:", userExists);}
+}
+
+
+
      //console.log("1. Aqui tenemos: ", id, typeof id, idx, typeof idx);
 
      //console.log(`1. id: ${id}, idx: ${idx}`);

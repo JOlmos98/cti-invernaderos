@@ -2,10 +2,7 @@ name: Test and Log
 
 on:
   push:
-    branches: 
-      - main
-      - develop
-      - backend/verify-emailUser-idUser
+    branches: ["*"]
 
 jobs:
   test:
