@@ -1,5 +1,4 @@
 'use server'
-//Esto es el actions.ts que suele estar en lib/actions.ts (Comprobar estructura por convención)
 
 import prisma from "@/lib/prisma";
 import bcrypt from 'bcrypt';
@@ -71,7 +70,7 @@ export const verifyUser = async (formData: FormData) => {
      } else {console.error("El usuario con id", id, "NO existe:", userExists);}
 }
 
-
+// --------------------------------------------------
 
      //console.log("1. Aqui tenemos: ", id, typeof id, idx, typeof idx);
 

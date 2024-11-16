@@ -1,40 +1,13 @@
 // import Image from "next/image";
-
-'use client'
+//'use client'
 
 import { delData, getData, setData, verifyUser } from '@/lib/actions';
 
 export default function About() {
 
-  //console.log('setting data3...');
-  // useEffect(() => {
-
-  //   const doSetData = async () => {
-  //     console.log('setting data');
-  //     await setData();
-  //   };
-  //   console.log('setting data2...');
-  //   doSetData();
-  // }, []);
-
-  /*async function clientDelData(formData: FormData) {    
-    console.log('deleting data...');
-    const result=await delData(formData);
-    if (result?.error) {
-      // alert(result.error);
-      toast.error(result.error);
-
-      // console.error('Error deleting user!!!:', formData.get('id'))
-      // return;
-    }
-    else{
-      toast.success('User deleted successfully');
-    }
-  }*/
-
   return (
     <div >
-      <p> About!!</p>
+      <p>Pruebas con Server Actions</p>
       <div className='flex  flex-col w-200 items-center justify-center gap-2'>
         <form action={setData} className='flex  flex-col w-200 items-center justify-center gap-2' >
           <input type="Text" name="name" placeholder="Name"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
@@ -64,3 +37,29 @@ export default function About() {
     </div>
   );
 }
+
+  //console.log('setting data3...');
+  // useEffect(() => {
+
+  //   const doSetData = async () => {
+  //     console.log('setting data');
+  //     await setData();
+  //   };
+  //   console.log('setting data2...');
+  //   doSetData();
+  // }, []);
+
+  /*async function clientDelData(formData: FormData) {    
+    console.log('deleting data...');
+    const result=await delData(formData);
+    if (result?.error) {
+      // alert(result.error);
+      toast.error(result.error);
+
+      // console.error('Error deleting user!!!:', formData.get('id'))
+      // return;
+    }
+    else{
+      toast.success('User deleted successfully');
+    }
+  }*/
