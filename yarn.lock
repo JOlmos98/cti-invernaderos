@@ -5,7 +5,7 @@
 "01-omega@file:.":
   version "0.1.0"
   dependencies:
-    "01-omega" "file:../.cache/yarn/v6/npm-01-omega-0.1.0-3361b071-8a9e-4894-81cb-d82517884ce4-1731586319929/node_modules/01-omega"
+    "01-omega" "file:../.cache/yarn/v6/npm-01-omega-0.1.0-b35879d3-f9c4-475c-bd7f-69d8eca185a4-1731759711361/node_modules/01-omega"
     "@prisma/client" "^5.21.1"
     bcrypt "^5.1.1"
     cross-env "^7.0.3"
@@ -2537,6 +2537,11 @@ react-dom@19.0.0-rc-02c0e824-20241028:
   integrity sha512-LrZf3DfHL6Fs07wwlUCHrzFTCMM19yA99MvJpfLokN4I2nBAZvREGZjZAn8VPiSfN72+i9j1eL4wB8gC695F3Q==
   dependencies:
     scheduler "0.25.0-rc-02c0e824-20241028"
+
+react-hook-form@^7.53.2:
+  version "7.53.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.53.2.tgz#6fa37ae27330af81089baadd7f322cc987b8e2ac"
+  integrity sha512-YVel6fW5sOeedd1524pltpHX+jgU2u3DSDtXEaBORNdqiNrsX/nUI/iGXONegttg0mJVnfrIkiV0cmTU6Oo2xw==
 
 react-hot-toast@^2.4.1:
   version "2.4.1"

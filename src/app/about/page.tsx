@@ -2,6 +2,7 @@
 //'use client'
 
 import { delData, getData, setData, verifyUser } from '@/lib/actions';
+import Link from 'next/link';
 
 export default function About() {
 
@@ -31,6 +32,10 @@ export default function About() {
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
           <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Comprobar existencia</button>
         </form>        
+        </div>
+        <br />
+        <div>
+        <Link href="/form" className="bg-purple-500 p-2 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
         </div>
       </div>
       
