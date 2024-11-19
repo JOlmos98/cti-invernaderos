@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { BParam, IParam, SParam, TP } from "./tiposGlobales";
 
+// -------------------------------------------------- Aquí se generan los ID con el CounterLevel --------------------------------------------------
+
 const idCounter = {
      counter: BigInt(0),
      level: 0
@@ -11,6 +13,34 @@ const incRepeticion1: number = 8388608;//+6 - 23bits
 const incRepeticion2: number = 131072; //+6 - 17bits
 const incRepeticion3: number = 2048;   //+4 - 11bits
 const incRepeticion4: number = 128;    //+0    7bit
+
+export const idc = (): bigint => { 
+     return idCounter.counter++; //Esta función devuelve la propiedad counter de idCounter incrementado en 1.
+}
+
+export const setCounterLevel = (level: number): void => {
+
+     idCounter.level = level;
+     
+     switch (idCounter.level) {
+          case 0: idCounter.counter = idCounter.counter & BigInt(0xFFFFF00000000); break;  //+8 (0s) - 32bits                --- 1111 1111 1111 1111 1111 0000 0000 0000 0000 0000 0000 0000 0000 
+          case 1: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFF800000); break;  //+5 (0s y el 8) - 23bits         --- 1111 1111 1111 1111 1111 1111 1111 1000 0000 0000 0000 0000 0000 
+          case 2: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFE0000); break;  //+4 (0s y la E) - 17bits         --- 1111 1111 1111 1111 1111 1111 1111 1111 1110 0000 0000 0000 0000 
+          case 3: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFFF800); break;  //+2 (0s y el 8) - 11bits         --- 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1000 0000 0000
+          case 4: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFFFF80); break;  //+1 (0 y el 8)  - 7bit           --- 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1000 0000
+          default: break;
+     }
+
+     switch (idCounter.level) {
+          case 0: idCounter.counter += BigInt(incGeneral); break;
+          case 1: idCounter.counter += BigInt(incRepeticion1); break;
+          case 2: idCounter.counter += BigInt(incRepeticion2); break;
+          case 3: idCounter.counter += BigInt(incRepeticion3); break;
+          case 4: idCounter.counter += BigInt(incRepeticion4); break;
+          default: break;
+     }
+
+}
 
 // -------------------------------------------------- Esta es la función que carga los parámtros --------------------------------------------------
 
@@ -83,38 +113,6 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
           case TP.STRING:
                (param as SParam).valor = xvalor; //el condicinal hay que trabajarlo. El valor siempre existira
                break;
-     }
-
-}
-
-
-
-// -------------------------------------------------- Aquí se generan los ID con el CounterLevel --------------------------------------------------
-
-export const idc = (): bigint => { 
-     return idCounter.counter++; //Esta función devuelve la propiedad counter de idCounter incrementado en 1.
-}
-
-export const setCounterLevel = (level: number): void => {
-
-     idCounter.level = level;
-     
-     switch (idCounter.level) {
-          case 0: idCounter.counter = idCounter.counter & BigInt(0xFFFFF00000000); break;  //+9 - 32bits
-          case 1: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFF800000); break;  //+6 - 23bits
-          case 2: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFE0000); break;  //+6 - 17bits
-          case 3: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFFF800); break;  //+4 - 11bits
-          case 4: idCounter.counter = idCounter.counter & BigInt(0xFFFFFFFFFFF80); break;  //      7bit
-          default: break;
-     }
-
-     switch (idCounter.level) {
-          case 0: idCounter.counter += BigInt(incGeneral); break;
-          case 1: idCounter.counter += BigInt(incRepeticion1); break;
-          case 2: idCounter.counter += BigInt(incRepeticion2); break;
-          case 3: idCounter.counter += BigInt(incRepeticion3); break;
-          case 4: idCounter.counter += BigInt(incRepeticion4); break;
-          default: break;
      }
 
 }

@@ -17,6 +17,7 @@ export default function About() {
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
           <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Submit</button>
         </form>
+
         <button className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" onClick={getData}>Listar usuarios</button>
         <div className='mt-10'>
           <form action={delData} className='flex  flex-col w-200 items-center justify-center gap-2'>
@@ -25,6 +26,7 @@ export default function About() {
             <br />
           </form>
         </div>
+
         <div>
         <form action={verifyUser} className='flex flex-col w-200 items-center justify-center gap-2' >
           <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
@@ -33,6 +35,7 @@ export default function About() {
           <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Comprobar existencia</button>
         </form>        
         </div>
+        
         <br />
         <div>
         <Link href="/form" className="bg-purple-500 p-2 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
