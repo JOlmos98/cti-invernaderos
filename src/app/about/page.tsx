@@ -26,7 +26,7 @@ export default function About() {
           </form>
         </div>
         <div>
-        <form action={verifyUser} className='flex  flex-col w-200 items-center justify-center gap-2' >
+        <form action={verifyUser} className='flex flex-col w-200 items-center justify-center gap-2' >
           <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
           <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300'/>
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}

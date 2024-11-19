@@ -1,4 +1,4 @@
-"use client";
+"use client"; //Por usar el hook useForm.
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
