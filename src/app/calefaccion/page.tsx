@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const page = () => {
+export default function calefaccion() {
   return (
-    <h1> Calefaccion</h1>
+    <h1>Hola estoy en Calefaccion</h1>
   )
 }

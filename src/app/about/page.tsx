@@ -4,7 +4,6 @@
 
 
 import { delData, delDataId, getData, setData, setData2 } from '@/database/db';
-import { useEffect } from 'react';
 import {toast} from 'react-hot-toast';
 
 
