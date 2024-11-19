@@ -10,10 +10,12 @@
     bcrypt "^5.1.1"
     cross-env "^7.0.3"
     lucide-react "^0.456.0"
+
     next "15.0.2"
     react "19.0.0-rc-02c0e824-20241028"
     react-dom "19.0.0-rc-02c0e824-20241028"
     react-hot-toast "^2.4.1"
+    react-icons "^5.3.0"
 
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
@@ -2550,6 +2552,11 @@ react-hot-toast@^2.4.1:
   dependencies:
     goober "^2.1.10"
 
+react-icons@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.3.0.tgz#ccad07a30aebd40a89f8cfa7d82e466019203f1c"
+  integrity sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -2807,6 +2814,7 @@ streamsearch@^1.1.0:
     strip-ansi "^6.0.1"
 
 "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.3:
+
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

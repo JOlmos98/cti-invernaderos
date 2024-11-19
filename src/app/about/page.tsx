@@ -3,6 +3,7 @@
 
 import { delData, getData, setData, verifyUser } from '@/lib/actions';
 import Link from 'next/link';
+import {toast} from 'react-hot-toast';
 
 export default function About() {
 
@@ -17,6 +18,7 @@ export default function About() {
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
           <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Submit</button>
         </form>
+
 
         <button className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" onClick={getData}>Listar usuarios</button>
         <div className='mt-10'>
