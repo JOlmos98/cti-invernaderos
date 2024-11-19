@@ -7,8 +7,6 @@ import { globals } from "../globals/globals";
 import { loadParam as loadParam, setCounterLevel } from "./paramLoad";
 import { TP } from './tiposGlobales';
 
-
-
 //Carga de todos los datos
 /*
      Con esta función, una vez construidos los objetos calefaccion:calefaccionDto, 

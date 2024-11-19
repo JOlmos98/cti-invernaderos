@@ -6,7 +6,7 @@ class CafelaccionInfluenciaHumedadDto {
 
 // Inicializar en el constructor los valores para no tener problemas de null o undefined y utilizar modo strict
 
-// -------------------------------------------------- class CalefaccionDto
+// -------------------------------------------------- class CalefaccionDto --------------------------------------------------
 
 export class CalefaccionDto {
      tempSinConectarCR:IParam;
@@ -27,7 +27,7 @@ export class CalefaccionDto {
      }
 }
 
-// -------------------------------------------------- class CalefaccionConfiguracionDto
+// -------------------------------------------------- class CalefaccionConfiguracionDto --------------------------------------------------
 
 class CalefaccionConfiguracionDto {
      disponible:BParam;
@@ -54,7 +54,7 @@ class CalefaccionConfiguracionDto {
      }
 }
 
-// -------------------------------------------------- class Valvula3ViasDto
+// -------------------------------------------------- class Valvula3ViasDto --------------------------------------------------
 
  class Valvula3ViasDto {
      activada:BParam;

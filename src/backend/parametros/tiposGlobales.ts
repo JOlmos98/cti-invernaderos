@@ -23,7 +23,7 @@ export enum TP  {
 
 //Tipos de parámetros
 export interface IParam {
-     id:bigint, //bigint es como long en Java
+     id:bigint, //bigint = long, double, int...
      tipo:TP, //Este es nuestro tipo creado
      min:number,
      max:number,
