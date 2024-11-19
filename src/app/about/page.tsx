@@ -1,16 +1,54 @@
 // import Image from "next/image";
+//'use client'
 
-'use client'
-
-
-import { delData, delDataId, getData, setData, setData2 } from '@/database/db';
+import { delData, getData, setData, verifyUser } from '@/lib/actions';
+import Link from 'next/link';
 import {toast} from 'react-hot-toast';
-
-
 
 export default function About() {
 
-  console.log('setting data3...');
+  return (
+    <div >
+      <p>Pruebas con Server Actions</p>
+      <div className='flex  flex-col w-200 items-center justify-center gap-2'>
+        <form action={setData} className='flex  flex-col w-200 items-center justify-center gap-2' >
+          <input type="Text" name="name" placeholder="Name"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="email" name="email" placeholder="Email" className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300' />          
+          {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
+          <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Submit</button>
+        </form>
+
+
+        <button className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" onClick={getData}>Listar usuarios</button>
+        <div className='mt-10'>
+          <form action={delData} className='flex  flex-col w-200 items-center justify-center gap-2'>
+            <input type="number" name="id" placeholder='id to delete'  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+            <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Delete</button>
+            <br />
+          </form>
+        </div>
+
+        <div>
+        <form action={verifyUser} className='flex flex-col w-200 items-center justify-center gap-2' >
+          <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300'/>
+          {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
+          <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Comprobar existencia</button>
+        </form>        
+        </div>
+        
+        <br />
+        <div>
+        <Link href="/form" className="bg-purple-500 p-2 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
+        </div>
+      </div>
+      
+    </div>
+  );
+}
+
+  //console.log('setting data3...');
   // useEffect(() => {
 
   //   const doSetData = async () => {
@@ -21,7 +59,7 @@ export default function About() {
   //   doSetData();
   // }, []);
 
-  async function clientDelData(formData: FormData) {    
+  /*async function clientDelData(formData: FormData) {    
     console.log('deleting data...');
     const result=await delData(formData);
     if (result?.error) {
@@ -34,32 +72,4 @@ export default function About() {
     else{
       toast.success('User deleted successfully');
     }
-  }
-
-  return (
-    <div >
-      <p> About!!</p>
-      <div className='flex  flex-col w-200 items-center justify-center gap-2'>
-        <form action={setData2} className='flex  flex-col w-200 items-center justify-center gap-2' >
-          <input type="Text" name="name" placeholder="Name"  className='bg-slate-200'/>
-          <input type="email" name="email" placeholder="Email" className='bg-slate-200'/>
-          <input type="password" name="password" placeholder="Password" className='bg-slate-200' />          
-          {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
-          <button type="submit" className='bg-red-200 p-2 rounded-md'>Submit</button>
-
-        </form>
-        <button className="bg-blue-300 p-2 rounded-md font-bold" onClick={getData}> listar</button>
-        <div className='mt-10'>
-          <form action={clientDelData} className='flex  flex-col w-200 items-center justify-center gap-2'>
-            <input type="Text" name="id" placeholder='id to delete'  className='bg-slate-200'/>
-            <button type="submit" className='bg-red-200 p-2 rounded-md'>Delete</button>
-          </form>
-        </div>
-        <div>
-          <button className="bg-blue-300 p-2 rounded-md font-bold" onClick={async ()=>{const response=await delDataId(1); alert(response)}}> action</button>
-        </div>
-      </div>
-      
-    </div>
-  );
-}
+  }*/
