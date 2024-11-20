@@ -20,8 +20,6 @@ model User {
   //posts Post[]
 }
 
-
-
 model Calefaccion {
   id Int @id @default(autoincrement())
   calNumber Int @default(0)
@@ -75,27 +73,27 @@ model Parametros1 {
 }
 
 //Tablas inútiles
-model Parameters {
-  pkid Int @id @default(autoincrement())
-  id Int 
-  idType Int
-  minValue Float
-  maxValue Float
-  dataValue Float
-  description String
-}
+//model Parameters {
+  //pkid Int @id @default(autoincrement())
+  //id Int 
+  //idType Int
+  //minValue Float
+  //maxValue Float
+  //dataValue Float
+  //description String
+//}
 
-model Recipe {
-  id String @id @default(cuid())
-  name String
-  servings Int?
-  prepTime Int?
-  ingredients String?
-  instructions String?
-  imageUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//model Recipe {
+  //id String @id @default(cuid())
+  //name String
+  //servings Int?
+  //prepTime Int?
+  //ingredients String?
+  //instructions String?
+  //imageUrl String?
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}
 
 //model Post {
   //id        Int     @id @default(autoincrement())
