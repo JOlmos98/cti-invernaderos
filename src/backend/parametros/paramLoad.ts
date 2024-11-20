@@ -12,7 +12,7 @@ const incGeneral: number = 4294967296; //+9 - 32bits
 const incRepeticion1: number = 8388608;//+6 - 23bits
 const incRepeticion2: number = 131072; //+6 - 17bits
 const incRepeticion3: number = 2048;   //+4 - 11bits
-const incRepeticion4: number = 128;    //+0    7bit
+const incRepeticion4: number = 128;    //+0 - 7bit
 
 export const idc = (): bigint => { 
      return idCounter.counter++; //Esta función devuelve la propiedad counter de idCounter incrementado en 1.

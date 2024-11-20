@@ -12,14 +12,14 @@ export enum TP  {
 } 
 
 //Así funciona internamente el enum:
-// export const INTEGER=0;
-// export const REAL=1;
-// export const STRING=2;
-// export const BOOLEAN=3;
-// export const DATE=4;
-// export const TIME=5;
-// export const DATETIME=6;
-// export const LIST=7;
+// INTEGER=0;
+// REAL=1;
+// STRING=2;
+// BOOLEAN=3;
+// DATE=4;
+// TIME=5;
+// DATETIME=6;
+// LIST=7;
 
 //Tipos de parámetros
 export interface IParam {
