@@ -75,7 +75,7 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
      }
 
      //Consulta a DB para obtener el registro con el ID especificado
-     const result = await prisma.parametros1.findFirst({
+     const result = await prisma.parametros.findFirst({
           where: {
                id: xidc
           }
@@ -88,7 +88,7 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
 
           xvalor = param!.valor.toString(); //el condicinal hay que trabajarlo. El valor siempre existira
 
-          const result = await prisma.parametros1.create({
+          const result = await prisma.parametros.create({
                data: {
                     id: xidc,
                     valor: xvalor, //segun el tipo
