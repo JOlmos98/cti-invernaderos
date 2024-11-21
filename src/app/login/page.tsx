@@ -4,26 +4,8 @@ import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    id: '',
-    contraseña: ''
-  });
-  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.id || !formData.contraseña) {
-      setError('Por favor, rellena todos los campos');
-      return;
-    }
-
-    // En un caso real, aquí hay que validar con el BACKEND
-    
-    // Por ahora, simplemente guardamos en localStorage
-    localStorage.setItem('user', JSON.stringify(formData));
-    router.push('/'); // Redirige al home tras el inicio de sesión
-  };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

@@ -1,9 +1,10 @@
 "use client"; //Por usar el hook useForm.
+import { FormEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
-    const { register, handleSubmit } = useForm();
-    const onsubmit = (data: any) => {
+    const { register } = useForm();
+    const onsubmit = (data: FormEvent) => {
       console.log(data); //Lo que hace el form al pulsar el botón type="submit"
     }
 
