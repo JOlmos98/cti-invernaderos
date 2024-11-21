@@ -12,7 +12,6 @@ import { TP } from './tiposGlobales';
      Esta función se llama en el archivo app/layout.tsx
 */
 export const LoadingAllParams = () => { 
-
      //Proteccion para que no se vuelva a ejecutar en el inicio
      if (globals.loadedParameters) 
           return;
@@ -66,9 +65,6 @@ export const LoadingAllParams = () => {
      }
      setCounterLevel(0);
 
-     //... more parameters
-
-     //RESOLVER EL TEMA DE LA DIRECCION ****
      console.log("Carga de datos finalizada",)
 }
 

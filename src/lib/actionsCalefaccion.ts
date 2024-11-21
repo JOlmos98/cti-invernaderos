@@ -9,6 +9,7 @@ import { globals } from "../backend/globals/globals";
 import { loadParam as loadParam, setCounterLevel } from "../backend/parametros/paramLoad";
 import { TP } from '../backend/parametros/tiposGlobales';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
+import { threadId } from "worker_threads";
 
 // -------------------------------------------------- getDataAll --------------------------------------------------
 export async function getDataAll() {
@@ -22,7 +23,13 @@ export async function getDataAll() {
 
 
 
-// -------------------------------------------------- PRUEBAS CON CALEFACCION 2 --------------------------------------------------
+// -------------------------------------------------- PRUEBAS CON CALEFACCION 2 [1] --------------------------------------------------
+
+/*export async function loadParamAgain(){
+    globals.loadedParameters = false;
+    LoadingAllParams(); 
+    //Esto imprimirá otra vez el Cargando... y teoricamente actualiza los DTO obteniendo los datos de la DB
+}*/
 
 export async function getOffsetCal2(){
      console.log('getData (Imprime el offset de la calefacción 2)');
@@ -40,7 +47,7 @@ export async function getOffsetCal2(){
 
 export async function setOffsetCal2(formData: FormData) {
     const idDto=calefaccion[1].offset.id;
-    const valor=formData.get('valor') as string;
+    const valor=formData.get('valor');
     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
     const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
@@ -54,11 +61,13 @@ export async function setOffsetCal2(formData: FormData) {
               pkid: pkid
          },
          data: {
-              valor: valor
+              valor: valor as string
          }
     })
     console.log('Valor Offset Cal2 establecido: ', valor);
-    globals.loadedParameters = false;
-    LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
+    calefaccion[1].offset.valor = Number(valor);
+    //globals.loadedParameters = false;
+    //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
+
     console.log("4. Aqui el cal2.offset.valor es: ", calefaccion[1].offset.valor);
 }
