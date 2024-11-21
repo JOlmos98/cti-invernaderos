@@ -40,6 +40,8 @@ class CalefaccionConfiguracionDto {
      triacAsignado:IParam;
      conectado:BParam;
      nombre:SParam;
+     passRequerida:BParam;
+     pass:SParam;
 
      constructor() {
           this.disponible = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
@@ -51,6 +53,8 @@ class CalefaccionConfiguracionDto {
           this.triacAsignado = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.conectado = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
           this.nombre = {id:0n,tipo:0,valor:"",reset:0,tipoImportacion:0,nombre:""}
+          this.passRequerida = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
+          this.pass = {id:0n,tipo:0,valor:"",reset:0,tipoImportacion:0,nombre:""}
      }
 }
 

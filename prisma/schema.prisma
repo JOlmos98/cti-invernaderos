@@ -12,6 +12,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// -------------------------------------------------- Macro tabla para todos los parámetros del software--------------------------------------------------
+
+model Parametros {
+  pkid Int @id @default(autoincrement())
+  id BigInt                               //id generado con los setCounterLevel
+  nombre String
+  valor String @default("")               //number, string, boolean...
+  tipo Int @default(0)                    //TP: 1=int, 2=real, 3=string, 4=boolean, 5=date, 6=time, 7=datetime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([id], name: "id")
+}
+
+// -------------------------------------------------- Tabla de usuarios para pruebas --------------------------------------------------
+
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
@@ -20,82 +35,70 @@ model User {
   //posts Post[]
 }
 
+// -------------------------------------------------- USELESS TABLES --------------------------------------------------
 
+//model Calefaccion {
+  //id Int @id @default(autoincrement())
+  //calNumber Int @default(0)
+  //temp Float @default(25.0)
+  //offset Float @default(0.0)
+  //minRegCal  Int @default(0)
+  //maxRegCal Int @default(100)
+  //rangoRegCal Float @default(4)
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}
 
-model Calefaccion {
-  id Int @id @default(autoincrement())
-  calNumber Int @default(0)
-  temp Float @default(25.0)
-  offset Float @default(0.0)
-  minRegCal  Int @default(0)
-  maxRegCal Int @default(100)
-  rangoRegCal Float @default(4)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//model CalefaccionConfiguracion {
+  //id Int @id @default(autoincrement())
+  //disponible Boolean @default(false)
+  //histeresis Float @default(1.0)
+  //tipo Int @default(0)
+  //sondas String
+  //rele Int @default(0)
+  //salidaAnalogica Int @default(0)
+  //modo Int @default(0)
+  //triac Int @default(0)
+  //conectado Int @default(1)
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}
 
-model CalefaccionConfiguracion {
-  id Int @id @default(autoincrement())
-   disponible Boolean @default(false)
-   histeresis Float @default(1.0)
-   tipo Int @default(0)
-   sondas String
-   rele Int @default(0)
-   salidaAnalogica Int @default(0)
-   modo Int @default(0)
-   triac Int @default(0)
-   conectado Int @default(1)
-   createdAt DateTime @default(now())
-   updatedAt DateTime @updatedAt
-
-}
-
-model Valvula3Vias {
-  id Int @id @default(autoincrement())
-  activada Boolean @default(false)
-  releCalentar Int @default(0)
-  releEnfriar Int @default(0)
-  tiempoPulso Int @default(3)
-  tiempoEspera Int @default(60)
-  alarmaActiva Boolean @default(false)
-  numeroPulsos Int @default(20)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Parametros1 {
-  pkid Int @id @default(autoincrement())
-  id BigInt
-  nombre String
-  valor String @default("") //number, string, boolean...
-  tipo Int @default(0)      //TP: 1=int, 2=real, 3=string, 4=boolean, 5=date, 6=time, 7=datetime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  @@index([id], name: "id")
-}
+//model Valvula3Vias {
+  //id Int @id @default(autoincrement())
+  //activada Boolean @default(false)
+  //releCalentar Int @default(0)
+  //releEnfriar Int @default(0)
+  //tiempoPulso Int @default(3)
+  //tiempoEspera Int @default(60)
+  //alarmaActiva Boolean @default(false)
+  //numeroPulsos Int @default(20)
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}
 
 //Tablas inútiles
-model Parameters {
-  pkid Int @id @default(autoincrement())
-  id Int 
-  idType Int
-  minValue Float
-  maxValue Float
-  dataValue Float
-  description String
-}
+//model Parameters {
+  //pkid Int @id @default(autoincrement())
+  //id Int 
+  //idType Int
+  //minValue Float
+  //maxValue Float
+  //dataValue Float
+  //description String
+//}
 
-model Recipe {
-  id String @id @default(cuid())
-  name String
-  servings Int?
-  prepTime Int?
-  ingredients String?
-  instructions String?
-  imageUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//model Recipe {
+  //id String @id @default(cuid())
+  //name String
+  //servings Int?
+  //prepTime Int?
+  //ingredients String?
+  //instructions String?
+  //imageUrl String?
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}
 
 //model Post {
   //id        Int     @id @default(autoincrement())

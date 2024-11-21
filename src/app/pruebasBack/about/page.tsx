@@ -1,9 +1,9 @@
 // import Image from "next/image";
+//import {toast} from 'react-hot-toast';
 //'use client'
 
-import { delData, getData, setData, verifyUser } from '@/lib/actions';
+import { delData, getData, setData, verifyUser } from '@/lib/actionsUser';
 import Link from 'next/link';
-import {toast} from 'react-hot-toast';
 
 export default function About() {
 
@@ -40,7 +40,8 @@ export default function About() {
         
         <br />
         <div>
-        <Link href="/form" className="bg-purple-500 p-2 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
+        <Link href="/pruebasBack/form" className="bg-purple-500 p-2 m-1 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
+        <Link href="/pruebasBack/parametros" className="bg-yellow-700 p-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
         </div>
       </div>
       

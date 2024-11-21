@@ -12,7 +12,7 @@ const incGeneral: number = 4294967296; //+9 - 32bits
 const incRepeticion1: number = 8388608;//+6 - 23bits
 const incRepeticion2: number = 131072; //+6 - 17bits
 const incRepeticion3: number = 2048;   //+4 - 11bits
-const incRepeticion4: number = 128;    //+0    7bit
+const incRepeticion4: number = 128;    //+0 - 7bit
 
 export const idc = (): bigint => { 
      return idCounter.counter++; //Esta función devuelve la propiedad counter de idCounter incrementado en 1.
@@ -75,7 +75,7 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
      }
 
      //Consulta a DB para obtener el registro con el ID especificado
-     const result = await prisma.parametros1.findFirst({
+     const result = await prisma.parametros.findFirst({
           where: {
                id: xidc
           }
@@ -88,7 +88,7 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
 
           xvalor = param!.valor.toString(); //el condicinal hay que trabajarlo. El valor siempre existira
 
-          const result = await prisma.parametros1.create({
+          const result = await prisma.parametros.create({
                data: {
                     id: xidc,
                     valor: xvalor, //segun el tipo
