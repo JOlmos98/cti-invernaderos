@@ -23,5 +23,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/db-users/xuser.gtsf", "src/backend/calefaccion/funcionalidad/calefaccion.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src-tauri"]
 }
