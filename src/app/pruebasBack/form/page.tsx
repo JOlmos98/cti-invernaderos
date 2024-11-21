@@ -10,7 +10,7 @@ export default function Form() {
 
   return (
     <div>
-      <h1>Form</h1>
+      <h1 className='flex  flex-col w-200 items-center justify-center gap-8 mb-10 mt-5 text-2xl'>Form</h1>
       <div>
           <form action="" onSubmit={onsubmit} className='flex  flex-col w-200 items-center justify-center gap-1'>
             <label htmlFor="username" className='text-xl pt-3'>Username</label>
