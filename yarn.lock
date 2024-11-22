@@ -5,7 +5,7 @@
 "01-omega@file:.":
   version "0.1.0"
   dependencies:
-    "01-omega" "file:../.cache/yarn/v6/npm-01-omega-0.1.0-7ef1be44-ee15-46bd-bc1a-2a0990a49647-1732198327151/node_modules/01-omega"
+    "01-omega" "file:../.cache/yarn/v6/npm-01-omega-0.1.0-d22b0e62-248f-4c69-ada8-3f85d27a5e02-1732291573964/node_modules/01-omega"
     "@prisma/client" "^5.21.1"
     bcrypt "^5.1.1"
     cross-env "^7.0.3"
@@ -412,6 +412,11 @@
   integrity sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==
   dependencies:
     tslib "^2.4.0"
+
+"@tauri-apps/api@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@tauri-apps/api/-/api-2.1.1.tgz#77d4ddb683d31072de4e6a47c8613d9db011652b"
+  integrity sha512-fzUfFFKo4lknXGJq8qrCidkUcKcH2UHhfaaCNt4GzgzGaW2iS26uFOg4tS3H4P8D6ZEeUxtiD5z0nwFF0UN30A==
 
 "@tauri-apps/cli-darwin-arm64@2.1.0":
   version "2.1.0"
