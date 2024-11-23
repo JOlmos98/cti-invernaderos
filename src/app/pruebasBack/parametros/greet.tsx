@@ -1,3 +1,4 @@
+// /src/app/pruebasBack/parametros/greet.tsx
 'use client'
 
 import { useEffect, useState } from 'react';
@@ -13,5 +14,5 @@ export default function Greet() {
   }, [])
 
   // Necessary because we will have to use Greet as a component later.
-  return <div>{greeting}</div>;
+  return <div className="font-bold text-orange-500">{greeting}</div>;
 }

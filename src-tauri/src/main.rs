@@ -13,9 +13,7 @@ fn greet(name: &str) -> String {
 }
 
 fn main() {
-  app_lib::run();
-
-  //Añadido:
+  println!(" ===== Tauri iniciado =====");
   Builder::default()
   .invoke_handler(generate_handler![
       commands::get_offset_cal2_command,
@@ -24,4 +22,11 @@ fn main() {
   ])
   .run(tauri::generate_context!())
   .expect("Error al iniciar la aplicación");
+
+  app_lib::run();
+
 }
+
+/**/
+
+  /**/

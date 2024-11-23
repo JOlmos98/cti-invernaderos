@@ -4,12 +4,16 @@
 import { getDataAll, getOffsetCal2, setOffsetCal2 } from '@/lib/actionsCalefaccion';
 import { invoke } from '@tauri-apps/api/core';
 import Greet from './greet';
-
-
-
-
+import { useState } from 'react';
 
 export default function Parametros(){
+
+  const [showGreet, setShowGreet] = useState(false); // Estado para mostrar/ocultar el componente Greet
+
+  // Función para alternar el estado de Greet
+  const toggleGreet = () => {
+    setShowGreet(true); // Al hacer clic, se muestra Greet
+  };
 
   // Función para obtener el offset
   const getOffsetCal2 = async () => {
@@ -52,9 +56,9 @@ export default function Parametros(){
     return (
         <div className='flex flex-col w-200 items-center justify-center gap-2'>
             <h1 className='flex  flex-col w-200 items-center justify-center gap-8 mb-10 mt-5 text-2xl'>Parametros Cal2</h1>
-            <Greet />
-            <button type="submit" /*onClick={loadParamAgain}*/ className='bg-orange-500 p-2 mb-7 rounded-md font-bold hover:bg-orange-800'>Greet</button>
             
+            <button type="button" onClick={toggleGreet} /*onClick={loadParamAgain}*/ className='bg-orange-500 p-2 mb-7 rounded-md font-bold hover:bg-orange-800'>Greet</button>
+            {showGreet && <Greet />}
             <div className='bg-gray-700 rounded-md p-4'>
             <div className='flex items-center gap-2'>
             <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Activar / Desactivar</button>
