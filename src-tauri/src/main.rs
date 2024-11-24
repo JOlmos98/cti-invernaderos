@@ -9,15 +9,16 @@ use tauri::{generate_handler, Builder};
 
 #[tauri::command]
 fn greet(name: &str) -> String {
-   format!("Hello, {}!", name)
+   format!("\nAquí empiezo a hacer las conexiones \ncon Rust y rusqlite.\nHello, {}!", name)
 }
 
 fn main() {
-  println!(" ===== Tauri iniciado =====");
+  println!(" ========== Tauri iniciado ==========");
   Builder::default()
   .invoke_handler(generate_handler![
       commands::get_offset_cal2_command,
       commands::set_offset_cal2_command,
+      commands::get_all_parametros_command,
       greet
   ])
   .run(tauri::generate_context!())
