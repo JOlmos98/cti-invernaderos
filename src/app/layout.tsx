@@ -40,7 +40,16 @@ export default function RootLayout({
       >
         <Navbar /> 
         {children}
-        <Toaster position="top-right" />
+        <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#333",
+            color: "#fff",
+            borderRadius: "8px",
+          },
+        }}
+      />
       </body>
     </html>
   );

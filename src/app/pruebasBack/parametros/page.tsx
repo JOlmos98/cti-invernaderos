@@ -1,5 +1,6 @@
 "use client";
 
+import { toast, Toaster } from "react-hot-toast";
 import { useState } from "react";
 import {Greet, GetAllParametros, GetUserById, GetUserByIdProps} from "./invoke"; // Mantén el componente Greet si es necesario
 
@@ -14,6 +15,7 @@ export default function Parametros() {
   // ------------------------------ ↓ Llamamos a la función GetAllParametros en invoke.tsx ↓ ------------------------------
   const handleFetchParametros = async () => {
     await GetAllParametros(); // Aquí llamamos la función correctamente
+    toast.success("Parámetros impresos en consola del cliente."); // Muestra el toast
   };
 
   // ------------------------------ ↓ Llamamos a la función GetUserById en invoke.tsx ↓ ------------------------------
@@ -37,6 +39,7 @@ export default function Parametros() {
   // ------------------------------ ↓ return ↓ ------------------------------
   return (
     <div className="flex flex-col w-200 items-center justify-center gap-2">
+
       <h1 className="flex flex-col w-200 items-center justify-center gap-8 mb-5 mt-5 text-2xl">
         Parametros Cal2
       </h1>
