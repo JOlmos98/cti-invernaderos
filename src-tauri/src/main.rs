@@ -16,9 +16,8 @@ fn main() {
   println!(" ========== Tauri iniciado ==========");
   Builder::default()
   .invoke_handler(generate_handler![
-      commands::get_offset_cal2_command,
-      commands::set_offset_cal2_command,
       commands::get_all_parametros_command,
+      commands::get_user_by_id_command,
       greet
   ])
   .run(tauri::generate_context!())
