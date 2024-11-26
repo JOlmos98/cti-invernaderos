@@ -5,7 +5,7 @@ import Menuprincipal from "../../components/menuprincipal/Menuprincipal";
 import Link from "next/link";
 
 
-//Hay que modificar esto 
+//Hay que modificar 
 export default function Home() {
 
   const TopMenu = () =>{
