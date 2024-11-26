@@ -36,7 +36,7 @@ export default function Parametros() {
     }
   };
 
-  // ------------------------------ ↓ return ↓ ------------------------------
+  // ------------------------------ ↓ return HTML ↓ ------------------------------
   return (
     <div className="flex flex-col w-200 items-center justify-center gap-2">
 

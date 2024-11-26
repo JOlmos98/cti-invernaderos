@@ -11,8 +11,9 @@ pub struct Parametro {
     pub valor: String,}
 
 pub fn get_all_parametros() -> Result<Vec<Parametro>, String> {
+    println!("Directorio actual: {:?}", std::env::current_dir());
     println!("\n1. Conectando a la base de datos...");
-    let conn = Connection::open("/home/jesus/cti-invernaderos/prisma/clima.db")
+    let conn = Connection::open("../prisma/clima.db")
         .map_err(|e| format!("Error al abrir la base de datos: {}", e))?;
 
     println!("2. Preparando consulta...");
@@ -51,7 +52,7 @@ pub struct User {
 
 pub fn get_user_by_id(id: i32) -> Result<User, String> {
     println!("\n1. Conectando a la base de datos...");
-    let conn = Connection::open("/home/jesus/cti-invernaderos/prisma/clima.db")
+    let conn = Connection::open("../prisma/clima.db")
         .map_err(|e| format!("Error al abrir la base de datos: {}", e))?;
 
     println!("2. Preparando consulta...");
