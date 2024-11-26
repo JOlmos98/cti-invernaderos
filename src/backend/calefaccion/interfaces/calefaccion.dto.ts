@@ -1,28 +1,23 @@
 import { BParam, IParam, SParam, TP as TipoParametro } from "@/backend/parametros/tiposGlobales";
 
-
-
 //No utilizada
 class CafelaccionInfluenciaHumedadDto {
-
 }
 
+// Inicializar en el constructor los valores para no tener problemas de null o undefined y utilizar modo strict
 
+// -------------------------------------------------- class CalefaccionDto --------------------------------------------------
 
-
-
-export class CalefaccionDto2 {
+export class CalefaccionDto {
      tempSinConectarCR:IParam;
      offset:IParam;
      min:IParam;
      max:IParam;
      rango:IParam;
-     configuracion: CalefaccionConfiguracionDto2 = new CalefaccionConfiguracionDto2();
+     configuracion: CalefaccionConfiguracionDto = new CalefaccionConfiguracionDto();
      influenciaHumedad:CafelaccionInfluenciaHumedadDto = new CafelaccionInfluenciaHumedadDto();
-     valvula3Vias:Valvula3ViasDto2 = new Valvula3ViasDto2();    
+     valvula3Vias:Valvula3ViasDto = new Valvula3ViasDto();    
 
-     //Hay que inicializar en el constructor los valores para no tener problemas de null o undefined y utilizar modo strict de typescript
-     //Inicializar con valores por defecto o todo a 0
      constructor() {
           this.tempSinConectarCR = {id:BigInt(0),tipo:TipoParametro.REAL,min:0,max:100,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.offset = {id:BigInt(0),tipo:TipoParametro.REAL,min:0,max:100,valor:0,reset:0,tipoImportacion:0,nombre:""}
@@ -32,8 +27,9 @@ export class CalefaccionDto2 {
      }
 }
 
+// -------------------------------------------------- class CalefaccionConfiguracionDto --------------------------------------------------
 
-class CalefaccionConfiguracionDto2 {
+class CalefaccionConfiguracionDto {
      disponible:BParam;
      histeresis:IParam;
      tipoCalefaccion:IParam;
@@ -45,14 +41,11 @@ class CalefaccionConfiguracionDto2 {
      conectado:BParam;
      nombre:SParam;
 
-     //Hay que inicializar en el constructor los valores para no tener problemas de null o undefined y utilizar modo strict de typescript
-     //Inicializar con valores por defecto o todo a 0
      constructor() {
           this.disponible = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
           this.histeresis = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.tipoCalefaccion = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.releAsignado = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
-
           this.salidaAnalogica = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.modo = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.triacAsignado = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
@@ -61,7 +54,9 @@ class CalefaccionConfiguracionDto2 {
      }
 }
 
- class Valvula3ViasDto2 {
+// -------------------------------------------------- class Valvula3ViasDto --------------------------------------------------
+
+ class Valvula3ViasDto {
      activada:BParam;
      releCalentar:IParam;
      releEnfriar:IParam;
@@ -70,8 +65,6 @@ class CalefaccionConfiguracionDto2 {
      alarmaOnOff:BParam;
      numeroPulsosSaltaAlarma:IParam;
 
-     //Hay que inicializar en el constructor los valores para no tener problemas de null o undefined y utilizar modo strict de typescript
-     //Inicializar con valores por defecto o todo a 0
      constructor() {
           this.activada = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
           this.releCalentar = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
@@ -81,9 +74,6 @@ class CalefaccionConfiguracionDto2 {
           this.alarmaOnOff = {id:0n,tipo:0,valor:false,reset:0,tipoImportacion:0,nombre:""}
           this.numeroPulsosSaltaAlarma = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
           this.numeroPulsosSaltaAlarma = {id:0n,tipo:0,min:0,max:0,valor:0,reset:0,tipoImportacion:0,nombre:""}
-
-
      }
-
 } 
 

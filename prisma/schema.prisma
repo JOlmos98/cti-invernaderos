@@ -12,46 +12,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Recipe {
-  id String @id @default(cuid())
-  name String
-  servings Int?
-  prepTime Int?
-  ingredients String?
-  instructions String?
-  imageUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  posts Post[]
-}
-
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  password String @default("Sin password")
+  //posts Post[]
 }
 
 
-
-model Parameters {
-  pkid Int @id @default(autoincrement())
-  id Int 
-  idType Int
-  minValue Float
-  maxValue Float
-  dataValue Float
-  description String
-
-}
 
 model Calefaccion {
   id Int @id @default(autoincrement())
@@ -64,7 +33,6 @@ model Calefaccion {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 
 model CalefaccionConfiguracion {
   id Int @id @default(autoincrement())
@@ -81,7 +49,6 @@ model CalefaccionConfiguracion {
    updatedAt DateTime @updatedAt
 
 }
-
 
 model Valvula3Vias {
   id Int @id @default(autoincrement())
@@ -100,26 +67,58 @@ model Parametros1 {
   pkid Int @id @default(autoincrement())
   id BigInt
   nombre String
-  valor String @default("") //tipo, min, max, valor
-  tipo Int @default(0)
+  valor String @default("") //number, string, boolean...
+  tipo Int @default(0)      //TP: 1=int, 2=real, 3=string, 4=boolean, 5=date, 6=time, 7=datetime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   @@index([id], name: "id")
 }
 
-model Parametros2 {
+//Tablas inútiles
+model Parameters {
   pkid Int @id @default(autoincrement())
-  id Int
-  nombre String
-  tipo Int @default(0) //0=string, 1=float, 2=int, 3=boolean, 4=bigint
-  // min Float
-  // max Float
-  svalor String
-  fvalor Float
-  ivalor Int
-  bvalor Boolean
-  bigvalor BigInt
-  defaultValue String
+  id Int 
+  idType Int
+  minValue Float
+  maxValue Float
+  dataValue Float
+  description String
+}
+
+model Recipe {
+  id String @id @default(cuid())
+  name String
+  servings Int?
+  prepTime Int?
+  ingredients String?
+  instructions String?
+  imageUrl String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+//model Post {
+  //id        Int     @id @default(autoincrement())
+  //title     String
+  //content   String?
+  //published Boolean @default(false)
+  //author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)  
+  //authorId  Int
+//}
+
+//model Parametros2 {
+  //pkid Int @id @default(autoincrement())
+  //id Int
+  //nombre String
+  //tipo Int @default(0) //0=string, 1=float, 2=int, 3=boolean, 4=bigint
+  // min Float
+  // max Float
+  //svalor String
+  //fvalor Float
+  //ivalor Int
+  //bvalor Boolean
+  //bigvalor BigInt
+  //defaultValue String
+  //createdAt DateTime @default(now())
+  //updatedAt DateTime @updatedAt
+//}

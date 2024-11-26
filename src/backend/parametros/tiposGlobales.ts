@@ -11,6 +11,7 @@ export enum TP  {
      LIST,     
 } 
 
+//Así funciona internamente el enum:
 // export const INTEGER=0;
 // export const REAL=1;
 // export const STRING=2;
@@ -22,17 +23,17 @@ export enum TP  {
 
 //Tipos de parámetros
 export interface IParam {
-     id:bigint,
-     tipo:TP,
+     id:bigint, //bigint = long, double, int...
+     tipo:TP, //Este es nuestro tipo creado
      min:number,
      max:number,
      valor:number,
      reset:number,
      tipoImportacion:number,
      nombre:string
-
 }
 
+//Estas dos interfaces no son valor:number ni tienen max y min, el resto de info es igual
 export interface BParam {
      id:bigint,
      tipo:TP,
@@ -40,8 +41,6 @@ export interface BParam {
      reset:number,
      tipoImportacion:number,
      nombre:string
-
-     
 }
 
 export interface SParam {
@@ -51,6 +50,4 @@ export interface SParam {
      reset:number,
      tipoImportacion:number,
      nombre:string
-
-     
 }
