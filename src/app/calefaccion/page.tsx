@@ -10,6 +10,7 @@ export default function calefaccion() {
             <main className='h-full'>  
                  {/* El contenido de mi pagina */}
                  <h1> Hola estoy en Calefaccion </h1>
+                 {/* Necesito un header */}
             </main>
          </div>
         </div >

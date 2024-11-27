@@ -7,3 +7,7 @@ export interface MenuElemento {
     icono: IconType; 
     ruta: string ; // propiedad de la ruta, para poder movernos 
 }
+
+export interface Calefaccion {
+    
+}

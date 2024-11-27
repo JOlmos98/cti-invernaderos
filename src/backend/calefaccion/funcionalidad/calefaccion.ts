@@ -1,3 +1,4 @@
+// Ruta de este archivo src/backend/calefaccion/funcionalidad/calefaccion.ts
 
 import {CalefaccionDto}  from '../interfaces/calefaccion.dto';
 

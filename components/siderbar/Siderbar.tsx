@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BsFire } from "react-icons/bs";
+import NavLinks from "./navLinks";
 
 const Siderbar = () => {
   return (
@@ -11,33 +12,8 @@ const Siderbar = () => {
             CTI Control
           </h6>
         </div>
-
-        <div className="space-y-4">
-          <ul className="flex flex-col gap-2">
-            {/* Menu */}
-            <li>
-              <a
-                href="/menu"
-                className="flex items-center gap-4 px-4 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-              >
-                <AiFillHome className="w-6 h-6" />
-                <span className="font-medium">Menu</span>
-              </a>
-            </li>
-
-            {/* Calefacción */}
-            <li>
-              <a
-                href="/calefaccion"
-                className="flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-blue-600 rounded-lg transition-colors"
-              >
-                <BsFire className="w-6 h-6" />
-                <span className="font-medium">Calefaccion</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        < NavLinks /> 
+      </div> 
     </aside>
   );
 };
