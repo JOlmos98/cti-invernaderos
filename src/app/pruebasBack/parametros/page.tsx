@@ -35,7 +35,7 @@ export default function Parametros() {
       console.error("No se encontró el input.");
     }
   };
-  //Rama renombrada a backend/conectar-db-rust BORRAR este comentario
+
   // ------------------------------ ↓ return HTML ↓ ------------------------------
   return (
     <div className="flex flex-col w-200 items-center justify-center gap-2">

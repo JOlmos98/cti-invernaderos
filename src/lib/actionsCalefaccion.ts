@@ -1,4 +1,4 @@
-'use server'
+/*'use server'
 
 import prisma from "@/lib/prisma";
 
@@ -31,7 +31,7 @@ export async function getDataAll() {
     //Esto imprimirá otra vez el Cargando... y teoricamente actualiza los DTO obteniendo los datos de la DB
 }*/
 
-export async function getOffsetCal2(){
+/*export async function getOffsetCal2(){
      console.log('getData (Imprime el offset de la calefacción 2)');
 
      const idDto=calefaccion[1].offset.id;
@@ -70,4 +70,4 @@ export async function setOffsetCal2(formData: FormData) {
     //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
 
     console.log("4. Aqui el cal2.offset.valor es: ", calefaccion[1].offset.valor);
-}
+}*/
