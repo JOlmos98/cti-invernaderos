@@ -2,7 +2,7 @@
 //import {toast} from 'react-hot-toast';
 //'use client'
 
-import { delData, getData, setData, verifyUser } from '@/lib/actionsUser';
+//import { delData, getData, setData, verifyUser } from '@/lib/actionsUser';
 import Link from 'next/link';
 
 export default function About() {
@@ -11,7 +11,7 @@ export default function About() {
     <div >
       <p>Pruebas con Server Actions</p>
       <div className='flex  flex-col w-200 items-center justify-center gap-2'>
-        <form action={setData} className='flex  flex-col w-200 items-center justify-center gap-2' >
+        <form /*action={setData}*/ className='flex  flex-col w-200 items-center justify-center gap-2' >
           <input type="Text" name="name" placeholder="Name"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
           <input type="email" name="email" placeholder="Email" className='bg-gray-400 rounded-md placeholder-gray-300'/>
           <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300' />          
@@ -20,9 +20,9 @@ export default function About() {
         </form>
 
 
-        <button className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" onClick={getData}>Listar usuarios</button>
+        <button /*onClick={getData}*/ className="bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800" >Listar usuarios</button>
         <div className='mt-10'>
-          <form action={delData} className='flex  flex-col w-200 items-center justify-center gap-2'>
+          <form /*action={delData}*/ className='flex  flex-col w-200 items-center justify-center gap-2'>
             <input type="number" name="id" placeholder='id to delete'  className='bg-gray-400 rounded-md placeholder-gray-300'/>
             <button type="submit" className='bg-red-500 p-2 rounded-md font-bold hover:bg-red-800'>Delete</button>
             <br />
@@ -30,7 +30,7 @@ export default function About() {
         </div>
 
         <div>
-        <form action={verifyUser} className='flex flex-col w-200 items-center justify-center gap-2' >
+        <form /*action={verifyUser}*/ className='flex flex-col w-200 items-center justify-center gap-2' >
           <input type="number" name="id" placeholder="id"  className='bg-gray-400 rounded-md placeholder-gray-300'/>
           <input type="password" name="password" placeholder="Password" className='bg-gray-400 rounded-md placeholder-gray-300'/>
           {/* <input type="submit" value="Submit" className='bg-red-200 p-2 rounded-md'/> */}
