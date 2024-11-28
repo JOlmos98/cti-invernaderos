@@ -223,10 +223,87 @@ export async function setTempSinConectarCR(formData: FormData) {
      //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
  
      console.log("4. Aqui el calefaccion.["+idInputNumber+"].tempSinConectarCR.valor es: ", calefaccion[(idInputNumber-1)].tempSinConectarCR.valor);
-
-
  }
 
+ //SET tempActual según calefacción elegida con FORM
+ export async function setTempActualForm(formData: FormData) {
+
+     const idInput=formData.get('id');
+     const valor=formData.get('valor');
+
+     const idInputNumber=Number(idInput);
+     if (idInputNumber<=0 || idInputNumber>NUM_CALEFACCIONES) {
+          console.error("El idInput debe ser mayor que 0 y menor o igual que "+NUM_CALEFACCIONES);
+          return; //Detiene la ejecución de la función
+     }
+
+     const idDto=calefaccion[(idInputNumber-1)].tempActual.id
+
+     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
+     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
+     const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
+ 
+     const pkid=object?.pkid;
+     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
+     //Obtenido el pkid mediante el id bigint
+     console.log("3. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+     console.log("Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     calefaccion[(idInputNumber-1)].tempActual.valor = Number(valor);
+     //globals.loadedParameters = false;
+     //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
+ 
+     console.log("4. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
+ }
+
+ //SET tempActual según calefacción elegida con TICK
+ export async function setTempActualTick(idCal:number, valorTempActual:number) {
+
+     const idInput=idCal;
+     const valor=valorTempActual.toString();
+
+     const idInputNumber=Number(idInput);
+     if (idInputNumber<0 || idInputNumber>NUM_CALEFACCIONES) {
+          console.error("El idInput debe ser 0 y menor o igual que "+NUM_CALEFACCIONES);
+          return; //Detiene la ejecución de la función
+     }
+
+     const idDto=calefaccion[idInputNumber].tempActual.id
+
+     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
+     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
+     const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
+ 
+     const pkid=object?.pkid;
+     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
+     //Obtenido el pkid mediante el id bigint
+     console.log("3. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+     console.log("Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     calefaccion[idInputNumber].tempActual.valor = Number(valor);
+     //globals.loadedParameters = false;
+     //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
+ 
+     console.log("4. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+ }
+
+ //export async function getTempActual(idCal:number) {
+
+ //}
 /*export async function loadParamAgain(){
     globals.loadedParameters = false;
     LoadingAllParams(); 

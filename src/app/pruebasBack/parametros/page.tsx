@@ -1,11 +1,14 @@
 import { getDataAll, getOffsetCal1, getOffsetCal2, getOffsetCal3, setOffsetCal1, setOffsetCal2, setOffsetCal3, getAlltempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
+import Link from 'next/link';
 
 export default function Parametros(){
 
     return (
         <div className='flex flex-col w-200 items-center justify-center gap-2'>
-            <h1 className='flex  flex-col w-200 items-center justify-center gap-8 mb-8 mt-5 text-2xl'>Parametros "offset" y "tempSinConectarCR"</h1>
-            
+            <h1 className='flex  flex-col w-200 items-center justify-center gap-5 mb-3 mt-5 text-2xl'>Parametros "offset" y "tempSinConectarCR"</h1>
+
+            <Link href="/pruebasBack/tickYTempActual" className='bg-orange-600 p-2 rounded-md font-bold hover:bg-orange-800'>Tick y TempActual</Link>
+
             <div className='bg-gray-700 rounded-md p-4'>
             <div className='flex items-center gap-2'>
             <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Activar / Desactivar</button>
