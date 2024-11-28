@@ -3,7 +3,7 @@
 import {CalefaccionDto}  from '../interfaces/calefaccion.dto';
 
 export const calefaccion: CalefaccionDto[] = [];
-export const NUM_CALEFACCIONES=3;
+export const NUM_CALEFACCIONES=4;
 
 for (let i = 0; i < NUM_CALEFACCIONES; i++){
     calefaccion[i] = new CalefaccionDto();
