@@ -298,7 +298,7 @@ export async function setTempSinConectarCR(formData: FormData) {
      //globals.loadedParameters = false;
      //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
  
-     console.log("4. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+     console.log("4. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
  }
 
  //export async function getTempActual(idCal:number) {

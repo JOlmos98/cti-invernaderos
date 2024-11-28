@@ -10,8 +10,8 @@ for (let i = 0; i < NUM_CALEFACCIONES; i++){
     calefaccion[i] = new CalefaccionDto();
 }
 
-
-export async function comprobarTempActual(idCal: number){
+//Esta función en principio es innecesario, metemos el if en el propio tick.
+/*export async function comprobarTempActual(idCal: number){
     
     setInterval(async () => {
 
@@ -22,7 +22,7 @@ export async function comprobarTempActual(idCal: number){
 
     }, 3000);
 
-}
+}*/
 
 //Construir con bucle y variable MAX
 //calefaccion[0] = new CalefaccionDto2();
