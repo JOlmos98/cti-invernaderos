@@ -5,37 +5,28 @@ import BotonVolver from './botonVolver';
 
 
 
-const Navbar = () => {
-  return (
-    <nav className="bg-gray-800 py-5 px-7">
-       <div className="flex items-center justify-between text-white max-w-7xl mx-auto">
-          {/* Lada izquierdo Home y < */}
-          <div className="flex items-center space-x-4">
-          <BotonVolver /> 
-          <Link 
-            href="/" 
-            className="text-white hover:text-gray-300 transition-colors font-medium"
-          >
-            Home
-          </Link>  
-        </div> 
-        {/* Contenedor del centro */}
-          <div className="flex-1"></div>
-       {/* Lado derecho: About y menú de tres puntos */}
-       <div className="flex items-center space-x-6">
-          <Link 
-            href="/pruebasBack/about" 
-            className="text-white hover:text-gray-300 transition-colors font-medium"
-          >
-            About
-          </Link>
-          <button className="text-white hover:text-gray-300 transition-colors">
-            <MoreVertical size={24} />
-          </button>
-        </div>
+const Navbar: React.FC = () => {
+  return ( 
+    <nav className="bg-gray-800 h-12 w-[calc(100vw-72px)] fixed top-0 left-72 z-50">
+    <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-4 text-white">
+      <div className="flex items-center space-x-4">
+        <BotonVolver />
+        <Link href="/" className="text-white hover:text-gray-300 transition-colors font-medium">
+          Inicio
+        </Link>
       </div>
-    </nav>
-      );
-    };
+      {/* Lado derecho */}
+      <div className="flex items-center space-x-6">
+        <Link href="/pruebasBack/about" className="text-white hover:text-gray-300 transition-colors font-medium">
+          About
+        </Link>
+        <button className="text-white hover:text-gray-300 transition-colors">
+          <MoreVertical size={24} />
+        </button>
+      </div>
+    </div>
+  </nav>     
+  )
+  };
 
 export default Navbar;
