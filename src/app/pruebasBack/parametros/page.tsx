@@ -1,5 +1,8 @@
-import { getDataAll, getOffsetCal1, getOffsetCal2, getOffsetCal3, setOffsetCal1, setOffsetCal2, setOffsetCal3, getAlltempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
+"use client";
+
+import { getDataAll, getOffset, setOffset, getAlltempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
 import Link from 'next/link';
+import React from 'react';
 
 export default function Parametros(){
 
@@ -9,40 +12,46 @@ export default function Parametros(){
 
             <Link href="/pruebasBack/tickYTempActual" className='bg-orange-600 p-2 rounded-md font-bold hover:bg-orange-800'>Tick y TempActual</Link>
 
-            <div className='bg-gray-700 rounded-md p-4'>
-            <div className='flex items-center gap-2'>
-            <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Activar / Desactivar</button>
-            <p className='bg-green-700 p-2 rounded-3xl font-bold'>passReq</p>
-            </div>
-            <p className='text-red-400 font-bold'>Por terminar</p>
-            </div>
+
 
             <button type="submit" onClick={getDataAll} className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800' >Imprimir parámetros</button>
             
             <div className='bg-gray-700 rounded-md p-4 mb-3'>
             <h1 className='flex  flex-col w-200 items-center justify-center text-2xl'>offset</h1>
             <div className='flex items-center gap-2'>
-                <form action={setOffsetCal1} className='' >
+                <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
+                    event.preventDefault(); // Detener el envío predeterminado del formulario.
+                    const formData = new FormData(event.currentTarget); // Obtener los datos del formulario.
+                    await setOffset(0, formData); // Llamar a la función con el FormData.
+                    }} className=''>
                     <button type="submit"  className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Establecer CAL1</button>
                     <input type="number" name='valor' placeholder="Valor de Offset Cal1"  className='bg-gray-400 rounded-md ml-1 placeholder-gray-300 w-38 h-8'/>
                 </form>
-                <button type="submit" onClick={getOffsetCal1} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
+                <button type="submit" onClick={async () => {const offset = await getOffset(0);}} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
                 </div>
                 <br />
                 <div className='flex items-center gap-2'>
-                <form action={setOffsetCal2} className='' >
+                <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
+                    event.preventDefault(); // Detener el envío predeterminado del formulario.
+                    const formData = new FormData(event.currentTarget); // Obtener los datos del formulario.
+                    await setOffset(1, formData); // Llamar a la función con el FormData.
+                    }} className='' >
                     <button type="submit"  className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Establecer CAL2</button>
                     <input type="number" name='valor' placeholder="Valor de Offset Cal2"  className='bg-gray-400 rounded-md ml-1 placeholder-gray-300 w-38 h-8'/>
                 </form>
-                <button type="submit" onClick={getOffsetCal2} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
+                <button type="submit" onClick={async () => {const offset = await getOffset(1);}} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
                 </div>
                 <br />
                 <div className='flex items-center gap-2'>
-                <form action={setOffsetCal3} className='' >
+                <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
+                    event.preventDefault(); // Detener el envío predeterminado del formulario.
+                    const formData = new FormData(event.currentTarget); // Obtener los datos del formulario.
+                    await setOffset(2, formData); // Llamar a la función con el FormData.
+                    }} className='' >
                     <button type="submit"  className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Establecer CAL3</button>
                     <input type="number" name='valor' placeholder="Valor de Offset Cal2"  className='bg-gray-400 rounded-md ml-1 placeholder-gray-300 w-38 h-8'/>
                 </form>
-                <button type="submit" onClick={getOffsetCal3} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
+                <button type="submit" onClick={async () => {const offset = await getOffset(2);}} className='bg-blue-500 p-2 rounded-md hover:bg-blue-800'>Print</button>
                 </div>
                 <br />
             </div>
@@ -67,3 +76,16 @@ export default function Parametros(){
 }
 
 //<p className='text-red-400'>Por terminar</p>
+
+
+/* Linea 15:
+
+            <div className='bg-gray-700 rounded-md p-4'>
+            <div className='flex items-center gap-2'>
+            <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Activar / Desactivar</button>
+            <p className='bg-green-700 p-2 rounded-3xl font-bold'>passReq</p>
+            </div>
+            <p className='text-red-400 font-bold'>Por terminar</p>
+            </div>
+
+*/

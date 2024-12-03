@@ -1,7 +1,5 @@
 
-import { setTempActualTick } from '@/lib/actionsCalefaccion';
 import {CalefaccionDto}  from '../interfaces/calefaccion.dto';
-import { setInterval } from 'timers';
 
 export const calefaccion: CalefaccionDto[] = [];
 export const NUM_CALEFACCIONES:number=3;
@@ -9,6 +7,10 @@ export const NUM_CALEFACCIONES:number=3;
 for (let i = 0; i < NUM_CALEFACCIONES; i++){
     calefaccion[i] = new CalefaccionDto();
 }
+
+
+
+
 
 //Esta función en principio es innecesaria, metemos el if en el propio tick.
 /*export async function comprobarTempActual(idCal: number){
@@ -30,7 +32,6 @@ for (let i = 0; i < NUM_CALEFACCIONES; i++){
 //calefaccion[2] = new CalefaccionDto2();
 //export const Calefaccion=()=>{
 //}
-
 
 //Esto se usa para establecer intervalos de tiempo.
 /*
