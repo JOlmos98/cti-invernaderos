@@ -10,7 +10,7 @@ for (let i = 0; i < NUM_CALEFACCIONES; i++){
     calefaccion[i] = new CalefaccionDto();
 }
 
-//Esta función en principio es innecesario, metemos el if en el propio tick.
+//Esta función en principio es innecesaria, metemos el if en el propio tick.
 /*export async function comprobarTempActual(idCal: number){
     
     setInterval(async () => {

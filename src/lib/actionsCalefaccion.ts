@@ -309,3 +309,27 @@ export async function setTempSinConectarCR(formData: FormData) {
     LoadingAllParams(); 
     //Esto imprimirá otra vez el Cargando... y teoricamente actualiza los DTO obteniendo los datos de la DB
 }*/
+
+// ---------------------------------------- Get para el tick, no sé por qué empiezan en 0 ----------------------------------------
+
+//Este get lo usamos para que en el tick las tempActual no empiecen en 0 y se coja el valor de la base de datos para el Dto.
+export async function getTempActual(idCal:number) {
+
+     const idDto=calefaccion[idCal].tempActual.id
+
+
+     
+     const tempActualDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+
+
+     console.log('TempActual DB: ', tempActualDB);
+     return tempActualDB ? Number(tempActualDB.valor) : 0;
+}
+//Este es el GET correcto, con la consulta obtiene el valor de la DB (que es un string) y al final del action lo devuelve como number, y si no deuvele nada, devuelve un valor 0.
