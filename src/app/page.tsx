@@ -23,7 +23,7 @@ export default function Home() {
      <div className="min-h-screen flex flex-col bg-slate-700">  {/*Que min-h-screen que este en el centro de la pantalla*/}
        <TopMenu /> 
       <div className="flex flex-grow items-center justify-center"> 
-        <div className="text-6xl font-bold text-white"> Home  </div> 
+        <div className="text-6xl font-bold text-white"> Home </div> 
       </div>
       
     {/*<Menuprincipal />*/}

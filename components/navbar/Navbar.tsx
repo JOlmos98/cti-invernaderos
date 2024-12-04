@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
       {/* Lado derecho */}
       <div className="flex items-center space-x-6">
         <Link href="/pruebasBack/about" className="text-white hover:text-gray-300 transition-colors font-medium">
-          About
+          Debug
         </Link>
         <button className="text-white hover:text-gray-300 transition-colors">
           <MoreVertical size={24} />
