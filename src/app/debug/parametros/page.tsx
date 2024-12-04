@@ -8,7 +8,7 @@ export default function Parametros(){
 
     return (
         <div className='flex flex-col w-200 items-center justify-center gap-2'>
-            <h1 className='flex  flex-col w-200 items-center justify-center gap-5 mb-3 mt-5 text-2xl'>Parametros "offset" y "tempSinConectarCR"</h1>
+            <h1 className='flex  flex-col w-200 items-center justify-center gap-5 mb-3 mt-5 text-2xl'>Parametros &quot;offset&quot; y &quot;tempSinConectarCR&quot;</h1>
 
             <Link href="/debug/tickYTempActual" className='bg-orange-600 p-2 rounded-md font-bold hover:bg-orange-800'>Tick y TempActual</Link>
 
@@ -74,18 +74,3 @@ export default function Parametros(){
 
     )
 }
-
-//<p className='text-red-400'>Por terminar</p>
-
-
-/* Linea 15:
-
-            <div className='bg-gray-700 rounded-md p-4'>
-            <div className='flex items-center gap-2'>
-            <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Activar / Desactivar</button>
-            <p className='bg-green-700 p-2 rounded-3xl font-bold'>passReq</p>
-            </div>
-            <p className='text-red-400 font-bold'>Por terminar</p>
-            </div>
-
-*/

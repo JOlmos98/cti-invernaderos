@@ -5,7 +5,7 @@
 import { delData, getData, setData, verifyUser } from '@/lib/actionsUser';
 import Link from 'next/link';
 
-export default function About() {
+export default function Debug() {
 
   return (
     <div >
@@ -47,32 +47,3 @@ export default function About() {
     </div>
   );
 }
-// Línea 43-44
-//         <Link href="/pruebasBack/form" className="bg-purple-500 p-2 m-1 rounded-md font-bold hover:bg-purple-800">React-Hook-Form</Link>
-
-
-  //console.log('setting data3...');
-  // useEffect(() => {
-
-  //   const doSetData = async () => {
-  //     console.log('setting data');
-  //     await setData();
-  //   };
-  //   console.log('setting data2...');
-  //   doSetData();
-  // }, []);
-
-  /*async function clientDelData(formData: FormData) {    
-    console.log('deleting data...');
-    const result=await delData(formData);
-    if (result?.error) {
-      // alert(result.error);
-      toast.error(result.error);
-
-      // console.error('Error deleting user!!!:', formData.get('id'))
-      // return;
-    }
-    else{
-      toast.success('User deleted successfully');
-    }
-  }*/

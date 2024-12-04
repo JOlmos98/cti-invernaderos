@@ -2,14 +2,8 @@ import { setTempActualTick } from "@/lib/actionsCalefaccion";
 import {calefaccion, NUM_CALEFACCIONES} from "./calefaccion/funcionalidad/calefaccion";
 import { evaluarTempActual, tempActualDBaDto } from "./calefaccion/funcionalidad/tempActual";
 
-// ------- Emisor -------
-import { EventEmitter } from "events";
-export const tempEmitter = new EventEmitter();
-// ------- Emisor -------
-
 export let estadoTick:boolean=false;
 let intervalo:NodeJS.Timeout; //Creamos el intervalo que es de tipo NodeJS.Timeout.
-export const tempActualState = Array.from({ length: NUM_CALEFACCIONES }, () => 0); // Almacén compartido - LINEA AÑADIDA POR IA 
 
 // -------------------- ON/OFF Tick en función de la guarda "" --------------------
 
@@ -17,7 +11,7 @@ export async function encenderOApagarTick(){
 
     // -------------------- ↓ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↓ --------------------
 
-    tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto.
+    tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto (sólo el parámetrotempActual).
 
     // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↑ --------------------
 
@@ -45,9 +39,7 @@ export async function encenderOApagarTick(){
                 //Esta función evalua si el valor es mayor a 30 y lo establece en 15 en la DB y en el Dto.
                 evaluarTempActual(i, calefaccion[i].tempActual.valor);
 
-                tempActualState[i] = calefaccion[i].tempActual.valor; //EVENTO para mostrar en el page.tsx
             }
-            tempEmitter.emit("tempUpdate", [...tempActualState]); //Emite EVENTO
 
             // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↑ --------------------
 
