@@ -5,6 +5,7 @@ import BotonVolver from './botonVolver';
 
 
 
+
 const Navbar: React.FC = () => {
   return ( 
     <nav className="bg-gray-800 h-12 w-[calc(100vw-72px)] fixed top-0 left-72 z-50">
@@ -14,6 +15,7 @@ const Navbar: React.FC = () => {
         <Link href="/" className="text-white hover:text-gray-300 transition-colors font-medium">
           Inicio
         </Link>
+
       </div>
       {/* Lado derecho */}
       <div className="flex items-center space-x-6">

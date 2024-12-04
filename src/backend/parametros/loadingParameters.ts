@@ -44,6 +44,8 @@ export const LoadingAllParams = () => {
           loadParam(calefaccion[i].valvula3Vias.numeroPulsosSaltaAlarma,{tipo:TP.INTEGER,min:0,max:10,valor:20,reset:0,tipoImportacion:0,nombre:"20. valvula3Vias.numeroPulsosSaltaAlarma Cal:"+(i+1)});
           loadParam(calefaccion[i].configuracion.passRequerida,{tipo:TP.BOOLEAN,valor:false,reset:0,tipoImportacion:0,nombre:"21. configuracion.passReq Cal:"+(i+1)});
           loadParam(calefaccion[i].configuracion.pass,{tipo:TP.STRING,valor:"",reset:0,tipoImportacion:0,nombre:"22. configuracion.pass Cal:"+(i+1)});
+          loadParam(calefaccion[i].tempActual,{tipo:TP.REAL,min:0,max:60.0,valor:15.0,reset:0,tipoImportacion:0,nombre:"23. tempActual Cal:"+(i+1)} );
+
           
           for (let j = 0; j < NUM_CALEFACCIONES; j++) { //En vez de NUM_CALEFACCIONES supongo que sería otra cosa.
                setCounterLevel(2);

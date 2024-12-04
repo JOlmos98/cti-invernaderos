@@ -2,7 +2,6 @@ import { BsFire } from "react-icons/bs";
 import { MenuElemento } from "../interfaces"
 import { IoSettings } from "react-icons/io5";
 import Link from "next/link";
-import { PiFanFill } from "react-icons/pi";
 import { LuThermometerSnowflake } from "react-icons/lu";
 
 

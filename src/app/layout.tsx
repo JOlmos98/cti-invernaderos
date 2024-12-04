@@ -38,10 +38,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       {/*<Navbar />*/} 
         {children}
         <Toaster position="top-right" />
       </body>
     </html>
   );
 }
+
+//<Navbar /> 
