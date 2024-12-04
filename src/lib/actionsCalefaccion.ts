@@ -38,7 +38,6 @@ export async function getOffset(idCal:number){
 export async function getAlltempSinConectarCR(){
      console.log('getData (Imprime todos los tempSinConectarCR)');
 
-     //Aquí para hacerlo automático haríamos un bucle que recorra todas las posibles calefacciones en función de NUM_CALEFACCIONES
      for (let i=0;i<NUM_CALEFACCIONES;i++) {
           const idDto=calefaccion[i].tempSinConectarCR.id;
 

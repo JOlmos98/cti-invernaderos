@@ -40,7 +40,7 @@ export default function About() {
         
         <br />
         <div>
-        <Link href="/pruebasBack/parametros" className="bg-yellow-700 p-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
+        <Link href="/debug/parametros" className="bg-yellow-700 p-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
         </div>
       </div>
       

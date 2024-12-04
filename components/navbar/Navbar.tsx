@@ -24,7 +24,7 @@ const Navbar = () => {
        {/* Lado derecho: About y menú de tres puntos */}
        <div className="flex items-center space-x-6">
           <Link 
-            href="/pruebasBack/about" 
+            href="/debug" 
             className="text-white hover:text-gray-300 transition-colors font-medium"
           >
             About

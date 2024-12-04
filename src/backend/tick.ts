@@ -4,6 +4,7 @@ import { getTempActual } from "@/lib/actionsCalefaccion";
 
 // ------- Emisor -------
 import { EventEmitter } from "events";
+import { evaluarTempActual } from "./calefaccion/funcionalidad/tempActual";
 export const tempEmitter = new EventEmitter();
 // ------- Emisor -------
 
@@ -38,20 +39,14 @@ export async function encenderOApagarTick(){
                 //ifs para que unas Cal aumenten más rápidamente que otras.
                 if (i===0) calefaccion[i].tempActual.valor+=0.1;
                 if (i===1) calefaccion[i].tempActual.valor+=0.4;
-                if (i===2) calefaccion[i].tempActual.valor+=0.9;
+                if (i===2) calefaccion[i].tempActual.valor+=1;
+                
+                //Esta función actualiza el valor en la DB.
+                setTempActualTick(i, calefaccion[i].tempActual.valor);
 
-                calefaccion[i].tempActual.valor+=0.1;
-                setTempActualTick(i, (calefaccion[i].tempActual.valor));
-                //comprobarTempActual(i); Esta función se reduce en el if de abajo
+                //Esta función evalua si el valor es mayor a 30 y lo establece en 15 en la DB y en el Dto.
+                evaluarTempActual(i, calefaccion[i].tempActual.valor);
 
-                if (calefaccion[i].tempActual.valor >= 30) {
-                    //Restablecer a 15 solo una vez
-                    setTempActualTick(i, 15);
-                    calefaccion[i].tempActual.valor = 15; //Reiniciar el valor local
-                } else {
-                    // Continuar incrementando normalmente si no se ha llegado a 30
-                    setTempActualTick(i, calefaccion[i].tempActual.valor);
-                }
                 tempActualState[i] = calefaccion[i].tempActual.valor; //EVENTO para mostrar en el page.tsx
 
             }

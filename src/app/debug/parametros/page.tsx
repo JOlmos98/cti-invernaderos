@@ -10,7 +10,7 @@ export default function Parametros(){
         <div className='flex flex-col w-200 items-center justify-center gap-2'>
             <h1 className='flex  flex-col w-200 items-center justify-center gap-5 mb-3 mt-5 text-2xl'>Parametros "offset" y "tempSinConectarCR"</h1>
 
-            <Link href="/pruebasBack/tickYTempActual" className='bg-orange-600 p-2 rounded-md font-bold hover:bg-orange-800'>Tick y TempActual</Link>
+            <Link href="/debug/tickYTempActual" className='bg-orange-600 p-2 rounded-md font-bold hover:bg-orange-800'>Tick y TempActual</Link>
 
 
 
