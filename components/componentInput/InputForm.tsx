@@ -1,51 +1,55 @@
 "use client"
+import Calefaccion from "@/app/calefaccion/page";
 import React, { useState } from "react";
+import {calefaccion } from "@/backend/calefaccion/funcionalidad/calefaccion";
+import { getOffset, setOffset } from "@/lib/actionsCalefaccion";
 
-const InputForm = () => {
-  const [inputValue, setInputValue] = useState<string>("");
+//pruebas Endpoints 
+type OffsetFormProps ={
+  id:number; 
+  onSetOffset: (id:number, formData: FormData) => Promise<void>; 
+  onGetOffset: (id:number) => Promise<number>; 
+}
 
-  const handleConfirm = () => {
-    alert(`Valor confirmado: ${inputValue}`);
-    setInputValue(""); // Reinicia el valor después de confirmar
-  };
-
-  const handleCancel = () => {
-    setInputValue(""); // Reinicia el valor al cancelar
-  };
-
+const OffsetForm: React.FC<OffsetFormProps> = ({ id, onSetOffset, onGetOffset }) => {
   return (
-    <div className="max-w-2xl mx-auto p-10 bg-gray-50 border rounded-md shadow-md">
-      <label htmlFor="title" className="block text-xl font-medium text-gray-700">
-        Configuracion  <span className="text-red-500">*</span>
-      </label>
-      <input
-        type="text"
-        id="title"
-        placeholder="Escribiendo"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-      />
-      <p className="mt-2 text-sm text-gray-500">
-        Por favor introduzca un valor entre 15º C - 30 ºC
-      </p>
+    <div className="flex flex-col items-center gap-4">
+      {/* Formulario para establecer el Offset */}
+      <form
+        onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
+          event.preventDefault(); // Evitar el comportamiento predeterminado
+          const formData = new FormData(event.currentTarget); // Obtener datos del formulario
+          await onSetOffset(id, formData); // Llamada a la función onSetOffset
+        }}
+        className="flex items-center gap-2"
+      >
+        <button
+          type="submit"
+          className="bg-blue-500 px-4 py-2 rounded-md font-bold text-white hover:bg-blue-800"
+        >
+          Establecer CAL{id}
+        </button>
+        <input
+          type="number"
+          name="valor"
+          placeholder={`Valor de Offset Cal${id}`}
+          className="bg-gray-200 rounded-md ml-1 placeholder-gray-500 w-32 h-10 px-2"
+        />
+      </form>
 
-      <div className="mt-6 flex justify-end space-x-5">
-        <button
-          onClick={handleCancel}
-          className="px-6 py-3 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300"
-        >
-          Cancelar
-        </button>
-        <button
-          onClick={handleConfirm}
-          className="px-6 py-3 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600"
-        >
-          Confirmar
-        </button>
-      </div>
+      {/* Botón para imprimir el Offset */}
+      <button
+        type="button"
+        onClick={async () => {
+          const offsetValue = await onGetOffset(id); // Llamada a la función onGetOffset
+          alert(`Offset actual para CAL${id}: ${offsetValue}`);
+        }}
+        className="bg-green-500 px-4 py-2 rounded-md font-bold text-white hover:bg-green-800"
+      >
+        Mostrar Offset
+      </button>
     </div>
   );
 };
 
-export default InputForm;
+export default OffsetForm;

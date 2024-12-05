@@ -31,7 +31,7 @@ export default async function CalefaccionPage({params} : { params : {id: string 
         {/* Contenido principal */}
         <main className="flex-1 ml-72 mt-12 p-4">
           {/* Ajuste de márgenes para evitar superposiciones */}
-          <h1 className='text-3xl font-bold text-center bg-gray-800 text-white py-4'> Calefaccion {id}</h1>
+          <h1 className='text-3xl font-bold text-center bg-gray-800 text-white py-4'> Calefaccion {(id+1)}</h1>
           <ul> 
              {items.map((item) => (
                <li

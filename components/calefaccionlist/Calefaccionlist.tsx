@@ -9,9 +9,9 @@ import Link from 'next/link';
 export default function CalefaccionList() {
   // Creamos dinámicamente la lista de calefacciones
   const calefacciones = Array.from({ length: NUM_CALEFACCIONES }, (_, index) => ({
-    id: index + 1, 
-    nombre: `Calefacción ${index + 1}`, 
-  }));
+    id: index + 1 , 
+    nombre: `Calefacción ${index + 1}`,
+    }));
 
   return (
     <div className="mt-32">

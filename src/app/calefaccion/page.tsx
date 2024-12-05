@@ -2,7 +2,7 @@ import React from 'react'
 import Siderbar from '../../../components/siderbar/Siderbar'
 import CalefaccionList from '../../../components/calefaccionlist/Calefaccionlist'
 
-export default function calefaccion() {
+export default function Calefaccion() {
   return (
     <div className='min-h-screen '> 
              < Siderbar /> 
