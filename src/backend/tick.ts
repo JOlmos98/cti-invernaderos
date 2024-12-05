@@ -8,46 +8,46 @@ let intervalo:NodeJS.Timeout; //Creamos el intervalo que es de tipo NodeJS.Timeo
 
 // -------------------- ON/OFF Tick en función de la guarda "" --------------------
 
-estadoTick=globals.guardaParametros; 
-
 export async function encenderOApagarTick(){
 
     // -------------------- ↓ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↓ --------------------
-
+    
     tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto (sólo el parámetrotempActual).
 
     // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↑ --------------------
-
-    if (estadoTick){
-        estadoTick=false;
-        console.log("\n\nTick apagado.\n\n");
-        clearInterval(intervalo); //Esto apaga el intervalo.
-    } else {
-        estadoTick=true;
-        console.log("\n\nTick encendido.\n\n");
-        intervalo = setInterval(async () => { //Esto crea de nuevo el intervalo y funciona hasta el infinito (o hasta que estadoTick=false). 
-
-            // -------------------- ↓ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↓ --------------------
-
-            for (let i=0;i<NUM_CALEFACCIONES;i++){
-
-                //ifs para que unas Cal aumenten más rápidamente que otras.
-                if (i===0) calefaccion[i].tempActual.valor+=0.1;
-                if (i===1) calefaccion[i].tempActual.valor+=0.4;
-                if (i===2) calefaccion[i].tempActual.valor+=1;
-                
-                //Esta función actualiza el valor en la DB en función de el del Dto ya aumentado.
-                setTempActualTick(i, calefaccion[i].tempActual.valor);
-
-                //Esta función evalua si el valor es mayor a 30 y lo establece en 15 en la DB y en el Dto.
-                evaluarTempActual(i, calefaccion[i].tempActual.valor);
-
-            }
-
-            // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↑ --------------------
-
-        }, 1500);
+    if (globals.guardaParametrosTick){
+        if (estadoTick){
+            estadoTick=false;
+            console.log("\n\nTick apagado.\n\n");
+            clearInterval(intervalo); //Esto apaga el intervalo.
+        } else {
+            estadoTick=true;
+            console.log("\n\nTick encendido.\n\n");
+            intervalo = setInterval(async () => { //Esto crea de nuevo el intervalo y funciona hasta el infinito (o hasta que estadoTick=false). 
+    
+                // -------------------- ↓ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↓ --------------------
+    
+                for (let i=0;i<NUM_CALEFACCIONES;i++){
+    
+                    //ifs para que unas Cal aumenten más rápidamente que otras.
+                    if (i===0) calefaccion[i].tempActual.valor+=0.1;
+                    if (i===1) calefaccion[i].tempActual.valor+=0.4;
+                    if (i===2) calefaccion[i].tempActual.valor+=1;
+                    
+                    //Esta función actualiza el valor en la DB en función de el del Dto ya aumentado.
+                    setTempActualTick(i, calefaccion[i].tempActual.valor);
+    
+                    //Esta función evalua si el valor es mayor a 30 y lo establece en 15 en la DB y en el Dto.
+                    evaluarTempActual(i, calefaccion[i].tempActual.valor);
+    
+                }
+    
+                // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↑ --------------------
+    
+            }, 1500);
+        }
     }
+    
 }
 
 /*
