@@ -5,7 +5,7 @@ import { calefaccion, NUM_CALEFACCIONES } from "../backend/calefaccion/funcional
 
 // -------------------------------------------------- getDataAll --------------------------------------------------
 export async function getDataAll() {                                        
-     console.log('getData (Imprime la lista entera de parámetros)');
+     console.log('getData (Imprime la lista entera de parámetros, es decir, la tabla entera de la base de datos)');
      const params = await prisma.parametros.findMany();
      console.log('Parámetros: ', params);
      return params;
@@ -13,7 +13,7 @@ export async function getDataAll() {
 
 // -------------------------------------------------- ↓ GET ↓ --------------------------------------------------
 
-// -------------------- GET offset --------------------
+// -------------------- GET offset -------------------- YES
 export async function getOffset(idCal:number){
      const idDto=calefaccion[idCal].offset.id
 
@@ -34,7 +34,28 @@ export async function getOffset(idCal:number){
      return calefaccion[idCal].offset.valor;
 }
 
-// -------------------- GETALL tempSinConectarCR --------------------
+// -------------------- GET tempSinConectarCR -------------------- YES
+export async function getTempSinConectarCR(idCal:number){
+     const idDto=calefaccion[idCal].tempSinConectarCR.id
+
+     const tempSinConectarCRDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+
+     const tempSinConectarCRObtenido=tempSinConectarCRDB ? Number(tempSinConectarCRDB.valor) : 0;
+     console.log('TempActual de tempSinConectarCR DB: ', tempSinConectarCRDB, "TempActual de tempSinConectarCR Dto: ", calefaccion[idCal].tempSinConectarCR.valor);
+
+     calefaccion[idCal].tempSinConectarCR.valor=tempSinConectarCRObtenido;
+
+     return calefaccion[idCal].tempSinConectarCR.valor;
+}
+
+// -------------------- GETALL tempSinConectarCR -------------------- NO
 export async function getAlltempSinConectarCR(){
      console.log('getData (Imprime todos los tempSinConectarCR)');
 
@@ -48,7 +69,7 @@ export async function getAlltempSinConectarCR(){
 
 // -------------------------------------------------- ↓ SET ↓ --------------------------------------------------
 
-// -------------------- SET offset --------------------
+// -------------------- SET offset -------------------- YES
 export async function setOffset(idCal:number, formData: FormData) {
 
      const idDto=calefaccion[idCal].offset.id
@@ -75,9 +96,36 @@ export async function setOffset(idCal:number, formData: FormData) {
      console.log("Offset de ", (idCal+1)," ahora: ", valor);
 }
 
-// -------------------- SET tempSinConectarCR --------------------
+// -------------------- SET tempSinConectarCR -------------------- YES
+export async function setTempSinConectarCR(idCal:number, formData: FormData) {
+
+     const idDto=calefaccion[idCal].tempSinConectarCR.id
+     const valor=formData.get('valor');
+
+     const tempSinConectarCRDB = await prisma.parametros.findFirst({where: {id: idDto}});
+     const pkid=tempSinConectarCRDB?.pkid;
+
+     console.log("tempSinConectarCR de ", (idCal+1)," antes: ", calefaccion[idCal].tempSinConectarCR.valor);
+
+     //Esto establece el valor en la DB
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+
+     //Esto establece el valor en el Dto
+     calefaccion[idCal].tempSinConectarCR.valor = Number(valor);
+
+     console.log("tempSinConectarCR de ", (idCal+1)," ahora: ", valor);
+}
+
+// -------------------- SET tempSinConectarCR (form) -------------------- NO
 //En este SET lo gestionamos todo con el Form, en el se introducen el id de la Calefaccion y el valor de tempSinConectarCR
-export async function setTempSinConectarCR(formData: FormData) {
+export async function setTempSinConectarCRForm(formData: FormData) {
 
      const idInput=formData.get('id');
      const valor=formData.get('valorTempSinConectarCR');
@@ -112,11 +160,16 @@ export async function setTempSinConectarCR(formData: FormData) {
      console.log("4. Aqui el calefaccion.["+idInputNumber+"].tempSinConectarCR.valor es: ", calefaccion[(idInputNumber-1)].tempSinConectarCR.valor);
  }
 
- // -------------------------------------------------- ↓ TICK ↓ --------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------------------------------------- 
+// -------------------------------------------------- ↓ TICK ↓ --------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------------------------------------- 
 
 // -------------------- Get para el tick, para asignar en el Dto antes de empezar a aumentar --------------------
-
 //Este get lo usamos para que en el tick las tempActual no empiecen en 0 y se coja el valor de la base de datos para el Dto.
+
+// -------------------- GET tempActual -------------------- YES
 export async function getTempActual(idCal:number) {
 
      const idDto=calefaccion[idCal].tempActual.id
@@ -131,10 +184,10 @@ export async function getTempActual(idCal:number) {
      });
 
      console.log('TempActual DB: ', tempActualDB);
-     return tempActualDB ? Number(tempActualDB.valor) : 0;
+     return tempActualDB ? Number(tempActualDB.valor) : 0; //Esto es basicamente un if, (if (tempActualDB) return Number(tempActualDB.valor) else return 0)
 }
 
-// -------------------- SET tempActual (form) --------------------
+// -------------------- SET tempActual (form) -------------------- NO
  export async function setTempActualForm(formData: FormData) {
 
      const idInput=formData.get('id');
@@ -150,9 +203,9 @@ export async function getTempActual(idCal:number) {
 
      console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
      //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
-     const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
+     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos el objeto entero.
  
-     const pkid=object?.pkid;
+     const pkid=tempActualObject?.pkid;
      console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
      //Obtenido el pkid mediante el id bigint
      console.log("3. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
@@ -164,15 +217,13 @@ export async function getTempActual(idCal:number) {
                valor: valor as string
           }
      })
-     console.log("Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
      calefaccion[(idInputNumber-1)].tempActual.valor = Number(valor);
-     //globals.loadedParameters = false;
-     //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
  
-     console.log("4. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
+     console.log("5. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
  }
 
- // -------------------- SET tempActual (tick) --------------------
+ // -------------------- SET tempActual (tick) -------------------- NO
  export async function setTempActualTick(idCal:number, valorTempActual:number) {
 
      const idInput=idCal;
@@ -188,9 +239,9 @@ export async function getTempActual(idCal:number) {
 
      console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
      //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
-     const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
+     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
  
-     const pkid=object?.pkid;
+     const pkid=tempActualObject?.pkid;
      console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
      //Obtenido el pkid mediante el id bigint
      console.log("3. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
@@ -202,42 +253,8 @@ export async function getTempActual(idCal:number) {
                valor: valor as string
           }
      })
-     console.log("Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
      calefaccion[idInputNumber].tempActual.valor = Number(valor);
  
-     console.log("4. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+     console.log("5. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
  }
-
-
-
-//Este es el GET correcto, con la consulta obtiene el valor de la DB (que es un string) y al final del action lo devuelve como number, y si no deuvele nada, devuelve un valor 0.
-
-//ANTIGUO SET cal 1 (action={setOffsetCal1})
-/*
-export async function setOffsetCal1(formData: FormData) {
-    const idDto=calefaccion[0].offset.id;
-    const valor=formData.get('valor');
-    console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
-    //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
-    const object = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
-
-    const pkid=object?.pkid;
-    console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
-    //Obtenido el pkid mediante el id bigint
-    console.log("3. Aqui el cal1.offset.valor es: ", calefaccion[0].offset.valor);
-    await prisma.parametros.update({
-         where: {
-              pkid: pkid
-         },
-         data: {
-              valor: valor as string
-         }
-    })
-    console.log('Valor Offset Cal1 establecido: ', valor);
-    calefaccion[0].offset.valor = Number(valor);
-    //globals.loadedParameters = false;
-    //LoadingAllParams(); //Esto imprimirá otra vez el Cargando... y establece 
-
-    console.log("4. Aqui el cal1.offset.valor es: ", calefaccion[0].offset.valor);
-}
-*/
