@@ -32,7 +32,7 @@ export default function Parametros(){
                 <br />
                 <div className='flex items-center gap-2'>
                 <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
-                    event.preventDefault(); // Detener el envío predeterminado del formulario.
+                    event.preventDefault(); // Detener el envío predeterminado del formulario. (esto no me gusta, habría que ver si se puede tocar)
                     const formData = new FormData(event.currentTarget); // Obtener los datos del formulario.
                     await setOffset(1, formData); // Llamar a la función con el FormData.
                     }} className='' >
