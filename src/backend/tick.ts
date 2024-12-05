@@ -1,11 +1,14 @@
 import { setTempActualTick } from "@/lib/actionsCalefaccion";
 import {calefaccion, NUM_CALEFACCIONES} from "./calefaccion/funcionalidad/calefaccion";
 import { evaluarTempActual, tempActualDBaDto } from "./calefaccion/funcionalidad/tempActual";
+import { globals } from "./globals/globals";
 
 export let estadoTick:boolean=false;
 let intervalo:NodeJS.Timeout; //Creamos el intervalo que es de tipo NodeJS.Timeout.
 
 // -------------------- ON/OFF Tick en función de la guarda "" --------------------
+
+estadoTick=globals.guardaParametros; 
 
 export async function encenderOApagarTick(){
 

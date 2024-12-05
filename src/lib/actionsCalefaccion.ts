@@ -27,7 +27,7 @@ export async function getOffset(idCal:number){
      });
 
      const offsetObtenido=offsetDB ? Number(offsetDB.valor) : 0;
-     console.log('TempActual DB: ', offsetDB, "TempActual Dto: ", calefaccion[idCal].offset.valor);
+     console.log('TempActual de offset ('+(idCal+1)+') DB: ', offsetDB, "TempActual de offset ("+(idCal+1)+") Dto: ", calefaccion[idCal].offset.valor);
 
      calefaccion[idCal].offset.valor=offsetObtenido;
 

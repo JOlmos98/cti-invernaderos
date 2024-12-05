@@ -3,6 +3,7 @@ import { calefaccion, NUM_CALEFACCIONES } from "../calefaccion/funcionalidad/cal
 import { globals } from "../globals/globals";
 import { loadParam as loadParam, setCounterLevel } from "./paramLoad";
 import { TP } from './tiposGlobales';
+import { encenderOApagarTick } from "../tick";
 
 //Carga de todos los datos
 /*
@@ -11,10 +12,12 @@ import { TP } from './tiposGlobales';
 
      Esta función se llama en el archivo app/layout.tsx
 */
+
 export const LoadingAllParams = () => { 
      //Proteccion para que no se vuelva a ejecutar en el inicio
      if (globals.loadedParameters) 
-          return;
+          return; //Si es true, detenemos el arranque (por defecto al inicio será false).
+
      globals.loadedParameters = true;
      
      console.log("Cargando...");
@@ -68,6 +71,10 @@ export const LoadingAllParams = () => {
      setCounterLevel(0);
 
      console.log("Carga de datos finalizada",)
+
+     globals.guardaParametros=true;
+
+     //encenderOApagarTick();  //Comentamos esta línea si queremos que no se ejecute el tick automáticamente al arranque.
 }
 
 

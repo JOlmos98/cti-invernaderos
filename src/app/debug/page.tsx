@@ -40,7 +40,8 @@ export default function Debug() {
         
         <br />
         <div>
-        <Link href="/debug/parametros" className="bg-yellow-700 p-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
+        <Link href="/debug/calefaccion1" className="bg-green-700 p-2 m-2 rounded-md font-bold hover:bg-green-900">Calefacción 1 Inputs</Link>
+        <Link href="/debug/parametros" className="bg-yellow-700 p-2 m-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
         </div>
       </div>
       
