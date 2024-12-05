@@ -12,7 +12,7 @@ export default async function CalefaccionPage({params} : { params : {id: string 
     const { id } = await params; 
     const calId = parseInt(id); 
 
-    // Verifica que el ID sea válido
+    // Verifica que el ID sea válido A
     if (isNaN(calId) || calId < 0 || calId >= NUM_CALEFACCIONES) {
       return notFound(); 
     }
