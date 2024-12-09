@@ -6,20 +6,18 @@ import { getOffset, setOffset } from "@/lib/actionsCalefaccion";
 
 //pruebas Endpoints 
 type OffsetFormProps ={
-  id:number; 
-  onSetOffset: (id:number, formData: FormData) => Promise<void>; 
-  onGetOffset: (id:number) => Promise<number>; 
+  id:number;
 }
 
-const OffsetForm: React.FC<OffsetFormProps> = ({ id, onSetOffset, onGetOffset }) => {
+const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
   return (
     <div className="flex flex-col items-center gap-4">
       {/* Formulario para establecer el Offset */}
       <form
         onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault(); // Evitar el comportamiento predeterminado
-          const formData = new FormData(event.currentTarget); // Obtener datos del formulario
-          await onSetOffset(id, formData); // Llamada a la función onSetOffset
+          const formData = new FormData(event.currentTarget); 
+          await setOffset(id, formData); 
         }}
         className="flex items-center gap-2"
       >
@@ -41,8 +39,8 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id, onSetOffset, onGetOffset })
       <button
         type="button"
         onClick={async () => {
-          const offsetValue = await onGetOffset(id); // Llamada a la función onGetOffset
-          alert(`Offset actual para CAL${id}: ${offsetValue}`);
+           await getOffset (id); // Llamada a la función onGetOffset
+          alert(`Offset actual para CAL${id}`);
         }}
         className="bg-green-500 px-4 py-2 rounded-md font-bold text-white hover:bg-green-800"
       >
