@@ -72,7 +72,7 @@ export const LoadingAllParams = () => {
 
      console.log("Carga de datos finalizada",)
 
-     globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagarlo para el desarrollo.
+     globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagarlo para el desarrollo
 }
 
 
