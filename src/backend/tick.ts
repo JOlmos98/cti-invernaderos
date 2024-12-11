@@ -4,7 +4,7 @@ import { evaluarTempActual, tempActualDBaDto } from "./calefaccion/funcionalidad
 import { globals } from "./globals/globals";
 
 export let estadoTick:boolean=false;
-let intervalo:NodeJS.Timeout; //Creamos el intervalo que es de tipo NodeJS.Timeout.
+let intervalo:NodeJS.Timeout; //Creamos el intervalo que es de tipo NodeJS.Timeout
 
 // -------------------- ON/OFF Tick en función de la guarda "" --------------------
 
