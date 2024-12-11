@@ -6,8 +6,6 @@ import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
 import Navbar from "../../components/navbar/Navbar";
 import { encenderOApagarTick } from "@/backend/tick";
 
-
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,9 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-    // Llama a LoadingAllParams al arrancar el programa
     LoadingAllParams();
-    encenderOApagarTick(); 
+    encenderOApagarTick(); //Si se han cargado bien los parámetros, la guarda es igual a true y se enciende.
 
   return (
     <html lang="en">

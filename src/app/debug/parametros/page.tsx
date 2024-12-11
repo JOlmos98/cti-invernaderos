@@ -1,6 +1,6 @@
 "use client";
 
-import { getDataAll, getOffset, setOffset, getAlltempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
+import { getDataAll, getOffset, setOffset, getAlltempSinConectarCR, setTempSinConectarCRForm } from '@/lib/actionsCalefaccion';
 import Link from 'next/link';
 import React from 'react';
 
@@ -32,7 +32,7 @@ export default function Parametros(){
                 <br />
                 <div className='flex items-center gap-2'>
                 <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
-                    event.preventDefault(); // Detener el envío predeterminado del formulario.
+                    event.preventDefault(); // Detener el envío predeterminado del formulario. (esto no me gusta, habría que ver si se puede tocar)
                     const formData = new FormData(event.currentTarget); // Obtener los datos del formulario.
                     await setOffset(1, formData); // Llamar a la función con el FormData.
                     }} className='' >
@@ -61,7 +61,7 @@ export default function Parametros(){
             <h1 className='flex  flex-col w-200 items-center justify-center text-2xl mb-1'>tempSinConectarCR</h1>
 
                 <div className=''>
-                    <form action={setTempSinConectarCR} className="bg-gray-600 flex flex-col rounded-md items-center justify-center gap-2 mb-5 p-3">
+                    <form action={setTempSinConectarCRForm} className="bg-gray-600 flex flex-col rounded-md items-center justify-center gap-2 mb-5 p-3">
                         <input type="text" name="id" placeholder="num calefaccion"  className='bg-gray-400 rounded-md placeholder-gray-300 w-52 h-8'/>
                         <input type="number" name="valorTempSinConectarCR" placeholder="valor (Default: 0)" className='bg-gray-400 rounded-md placeholder-gray-300 w-52 h-8'/>
                         <button type="submit" className='bg-blue-500 p-2 rounded-md font-bold hover:bg-blue-800'>Establecer</button>
