@@ -9,8 +9,9 @@ import { getOffset, setOffset } from '@/lib/actionsCalefaccion';
 {/* Siempre que paso params hay que poner async function IMP*/}
 export default async function OffSetPage({params}:{params:{ id:string}}) {
   const { id } = await params; 
-  const idNum = parseInt(id,10); 
-
+  const idNum = parseInt(id); 
+  console.log("id:", id, "Tipo:", typeof id); 
+  console.log("id:", idNum, "Tipo:", typeof idNum); 
 
   return (
     <div className="min-h-screen">
@@ -24,6 +25,9 @@ export default async function OffSetPage({params}:{params:{ id:string}}) {
       <h1 className='text-2xl font-bold text-center bg-gray-800 text-white py-4'> OffSet Configuración </h1>
        <div className='min-h-screen  bg-gray-100 flex items-center justify-center'> 
         < InputForm id = {idNum} />           
+       </div>
+       <div> 
+        
        </div>
       </main>
      </div>

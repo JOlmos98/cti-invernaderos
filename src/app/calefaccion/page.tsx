@@ -1,6 +1,7 @@
 import React from 'react'
 import Siderbar from '../../../components/siderbar/Siderbar'
 import CalefaccionList from '../../../components/calefaccionlist/Calefaccionlist'
+import TemperaturaActual from '../../../components/temperaturaActual / TemperaturaActual'
 
 export default function Calefaccion() {
   return (
@@ -24,9 +25,10 @@ export default function Calefaccion() {
             <h3 className="text-xl font-semibold mb-4">Temperatura Actual</h3> 
           </div>
           {/* Otras columnas */}
+          < TemperaturaActual />
         </div>
-        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-white">
+          <p>&copy; {new Date().getFullYear()} CTIControl. All rights reserved.</p>
         </div>
       </div>
     </footer>
