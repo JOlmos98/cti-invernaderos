@@ -1,51 +1,68 @@
 "use client"
+import Calefaccion from "@/app/calefaccion/page";
 import React, { useState } from "react";
+import { getOffset, setOffset } from "@/lib/actionsCalefaccion";
+import { Eye } from "lucide-react";
 
-const InputForm = () => {
-  const [inputValue, setInputValue] = useState<string>("");
+// ✓ Correcto funcionanmiento de los endpoints
+type OffsetFormProps ={
+  id:number;
+}
 
-  const handleConfirm = () => {
-    alert(`Valor confirmado: ${inputValue}`);
-    setInputValue(""); // Reinicia el valor después de confirmar
-  };
-
-  const handleCancel = () => {
-    setInputValue(""); // Reinicia el valor al cancelar
-  };
-
+const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
   return (
-    <div className="max-w-2xl mx-auto p-10 bg-gray-50 border rounded-md shadow-md">
-      <label htmlFor="title" className="block text-xl font-medium text-gray-700">
-        Configuracion  <span className="text-red-500">*</span>
-      </label>
-      <input
-        type="text"
-        id="title"
-        placeholder="Escribiendo"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-      />
-      <p className="mt-2 text-sm text-gray-500">
-        Por favor introduzca un valor entre 15º C - 30 ºC
-      </p>
+    <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-md">
+    <h2 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
+      Offset de Calefacción {id + 1}
+    </h2>
 
-      <div className="mt-6 flex justify-end space-x-5">
+    <form
+      onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        try {
+          await setOffset(id, formData);  // Server Action => actualizar el valor offset
+        } catch (error: any) {
+          alert(`Error al establecer el Offset: ${error.message}`);
+        }
+      }}
+      className="space-y-8"
+    >
+      <div className="space-y-4">
+        <input
+          type="number"
+          name="valor"
+          placeholder={`Valor de Offset para calefacción ${id + 1}`}
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 
+                   focus:ring focus:ring-blue-100 transition-all
+                   outline-none text-gray-700 placeholder-gray-400 text-lg"
+        />
+        
+        <div className="flex gap-4 justify-between mt-5">
         <button
-          onClick={handleCancel}
-          className="px-6 py-3 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300"
-        >
-          Cancelar
-        </button>
-        <button
-          onClick={handleConfirm}
-          className="px-6 py-3 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600"
-        >
-          Confirmar
-        </button>
+            type="submit"
+            className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg"
+          >
+            Establecer
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              const form = document.querySelector('form');
+              if (form) {
+                form.reset();  // Resetea el formulario
+              }
+            }}
+            className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg"
+          >
+            Cancelar
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
+  </div>
   );
 };
 
-export default InputForm;
+export default OffsetForm;

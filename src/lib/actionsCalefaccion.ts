@@ -13,7 +13,7 @@ export async function getDataAll() {
 
 // -------------------------------------------------- ↓ GET ↓ --------------------------------------------------
 
-// -------------------- GET offset -------------------- YES
+// -------------------- GET offset -------------------- YES 
 export async function getOffset(idCal:number){
      const idDto=calefaccion[idCal].offset.id
 

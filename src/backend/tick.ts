@@ -15,6 +15,7 @@ export async function encenderOApagarTick(){
     tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto (sólo el parámetrotempActual).
 
     // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↑ --------------------
+
     if (globals.guardaParametrosTick){
         if (estadoTick){
             estadoTick=false;
