@@ -17,6 +17,7 @@
 /.next/
 /out/
 /prisma/clima.db
+prisma/clima.db
 
 # production
 #/build
