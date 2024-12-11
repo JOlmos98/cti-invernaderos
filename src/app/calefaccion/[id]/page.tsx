@@ -12,7 +12,7 @@ export default async function CalefaccionPage({params} : { params : {id: string 
     const { id } = await params; 
     const calId = parseInt(id); 
 
-    // Verifica que el ID sea válido
+    // Verifica que el ID sea válido A
     if (isNaN(calId) || calId < 0 || calId >= NUM_CALEFACCIONES) {
       return notFound(); 
     }
@@ -31,7 +31,7 @@ export default async function CalefaccionPage({params} : { params : {id: string 
         {/* Contenido principal */}
         <main className="flex-1 ml-72 mt-12 p-4">
           {/* Ajuste de márgenes para evitar superposiciones */}
-          <h1 className='text-3xl font-bold text-center bg-gray-800 text-white py-4'> Calefaccion {id}</h1>
+          <h1 className='text-3xl font-bold text-center bg-gray-800 text-white py-4'> Calefaccion {(calId+1)}</h1>
           <ul> 
              {items.map((item) => (
                <li

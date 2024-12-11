@@ -13,7 +13,7 @@ export async function getDataAll() {
 
 // -------------------------------------------------- ↓ GET ↓ --------------------------------------------------
 
-// -------------------- GET offset --------------------
+// -------------------- GET offset -------------------- YES 
 export async function getOffset(idCal:number){
      const idDto=calefaccion[idCal].offset.id
 
@@ -48,7 +48,7 @@ export async function getAlltempSinConectarCR(){
 
 // -------------------------------------------------- ↓ SET ↓ --------------------------------------------------
 
-// -------------------- SET offset --------------------
+// -------------------- SET offset -------------------- YES
 export async function setOffset(idCal:number, formData: FormData) {
 
      const idDto=calefaccion[idCal].offset.id

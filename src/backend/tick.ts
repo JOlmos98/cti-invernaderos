@@ -38,7 +38,6 @@ export async function encenderOApagarTick(){
 
                 //Esta función evalua si el valor es mayor a 30 y lo establece en 15 en la DB y en el Dto.
                 evaluarTempActual(i, calefaccion[i].tempActual.valor);
-
             }
 
             // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO EN INTERVALO ↑ --------------------

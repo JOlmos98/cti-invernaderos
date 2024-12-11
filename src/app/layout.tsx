@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
 import Navbar from "../../components/navbar/Navbar";
+import { encenderOApagarTick } from "@/backend/tick";
 
 
 
@@ -31,6 +32,7 @@ export default function RootLayout({
 
     // Llama a LoadingAllParams al arrancar el programa
     LoadingAllParams();
+    encenderOApagarTick(); 
 
   return (
     <html lang="en">
@@ -40,6 +42,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster position="top-right" />
+        
       </body>
     </html>
   );
