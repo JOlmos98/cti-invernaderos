@@ -1,6 +1,6 @@
 import { setTempActualTick } from "@/lib/actionsCalefaccion";
 import {calefaccion, NUM_CALEFACCIONES} from "./calefaccion/funcionalidad/calefaccion";
-import { evaluarTempActual, tempActualDBaDto } from "./calefaccion/funcionalidad/tempActual";
+import { evaluarTempActual } from "./calefaccion/funcionalidad/tempActual";
 import { globals } from "./globals/globals";
 
 export let estadoTick:boolean=false;
@@ -12,7 +12,7 @@ export async function encenderOApagarTick(){
 
     // -------------------- ↓ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↓ --------------------
     
-    tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto (sólo el parámetrotempActual).
+    //tempActualDBaDto(); //Obtenemos los datos de la DB y los establece en el Dto (sólo el parámetrotempActual).
 
     // -------------------- ↑ FUNCIONES PARA EL FUNCIONAMIENTO INICIAL ↑ --------------------
 

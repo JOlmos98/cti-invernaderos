@@ -42,7 +42,7 @@ export const setCounterLevel = (level: number): void => {
 
 }
 
-// -------------------------------------------------- Esta es la función que carga los parámtros --------------------------------------------------
+// -------------------------------------------------- Esta es la función que carga los parámetros y asigna los IDs --------------------------------------------------
 
 export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { tipo: number, min?: number, max?: number, valor: number | boolean | string, reset: number; tipoImportacion: number, nombre: string }) => {
 
@@ -51,7 +51,7 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
 
      //Inicializamos la variable según el TP si es case INTEGER|REAL o case BOOLEAN|STRING
      switch (inicializacion.tipo) {
-          case TP.INTEGER|TP.REAL:
+          case TP.REAL:
                param.id = xidc;
                param.tipo = inicializacion.tipo;
                param.valor = inicializacion.valor as number
@@ -61,10 +61,34 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
                param.tipoImportacion = inicializacion.tipoImportacion;
                param.nombre = inicializacion.nombre;
                break;
-          case TP.BOOLEAN|TP.STRING:
+
+          case TP.INTEGER:                   //Dividimos los case porque antes era TP.INTEGER|TP.REAL y daba error, los INTEGER se cargaban en el Dto con id = 0n
+               param.id = xidc;
+               param.tipo = inicializacion.tipo;
+               param.valor = inicializacion.valor as number
+               (param as IParam).min = inicializacion.min!;
+               (param as IParam).max = inicializacion.max!;
+               param.reset = inicializacion.reset;
+               param.tipoImportacion = inicializacion.tipoImportacion;
+               param.nombre = inicializacion.nombre;
+               break;
+
+          case TP.STRING:
                param.id = xidc
                param.tipo = inicializacion.tipo;
                if (inicializacion.tipo === TP.STRING) 
+               param.valor = inicializacion.valor;
+               else
+               param.valor = inicializacion.valor as boolean;
+               param.reset = inicializacion.reset;
+               param.tipoImportacion = inicializacion.tipoImportacion;
+               param.nombre = inicializacion.nombre;
+               break;
+
+          case TP.BOOLEAN:
+               param.id = xidc
+               param.tipo = inicializacion.tipo;
+               if (inicializacion.tipo === TP.BOOLEAN) 
                param.valor = inicializacion.valor;
                else
                param.valor = inicializacion.valor as boolean;
@@ -104,7 +128,10 @@ export const loadParam = async (param: IParam|BParam|SParam, inicializacion: { t
 
      //Este if, según el TP de la variable, establece la variable valor:number||boolean||string
      switch (inicializacion.tipo) {
-          case TP.INTEGER|TP.REAL:
+          case TP.REAL:  //TP.INTEGER|TP.REAL NO FUNCIONA, por eso hay que separarlos en dos "case"
+               (param as IParam).valor = Number(xvalor);  //el condicinal hay que trabajarlo. El valor siempre existira
+               break;
+          case TP.INTEGER:
                (param as IParam).valor = Number(xvalor);  //el condicinal hay que trabajarlo. El valor siempre existira
                break;
           case TP.BOOLEAN:

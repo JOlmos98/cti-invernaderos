@@ -1,13 +1,5 @@
-import { setTempActualTick, getTempActual } from "@/lib/actionsCalefaccion";
-import { calefaccion, NUM_CALEFACCIONES } from "./calefaccion";
-
-// -------------------- SET tempActual en Dto en función de la DB --------------------
-export async function tempActualDBaDto(){
-    for (let i = 0; i < NUM_CALEFACCIONES; i++){
-        const tempActualDB= await getTempActual(i);
-        calefaccion[i].tempActual.valor=tempActualDB;
-    }
-}
+import { setTempActualTick} from "@/lib/actionsCalefaccion";
+import { calefaccion} from "./calefaccion";
 
 // -------------------- SET tempActual si es >=30 y establecerlo en 15 --------------------
 export function evaluarTempActual(idCal: number, valor: number){

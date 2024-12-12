@@ -17,7 +17,7 @@ export class CalefaccionDto {
      configuracion: CalefaccionConfiguracionDto = new CalefaccionConfiguracionDto();
      influenciaHumedad:CafelaccionInfluenciaHumedadDto = new CafelaccionInfluenciaHumedadDto();
      valvula3Vias:Valvula3ViasDto = new Valvula3ViasDto();  
-     tempActual:IParam;  
+     tempActual:IParam;
 
      constructor() {
           this.tempSinConectarCR = {id:BigInt(0),tipo:TipoParametro.REAL,min:0,max:100,valor:0,reset:0,tipoImportacion:0,nombre:""}

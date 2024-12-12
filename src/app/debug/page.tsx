@@ -42,6 +42,7 @@ export default function Debug() {
         <div>
         <Link href="/debug/calefaccion1" className="bg-green-700 p-2 m-2 rounded-md font-bold hover:bg-green-900">Calefacción 1 Inputs</Link>
         <Link href="/debug/parametros" className="bg-yellow-700 p-2 m-2 rounded-md font-bold hover:bg-yellow-900">Parametros</Link>
+        <Link href="/debug/refrigeracion1" className="bg-cyan-800 p-2 m-2 rounded-md font-bold hover:bg-cyan-900">Refrigeración 1 Inputs</Link>
         </div>
       </div>
       

@@ -258,3 +258,161 @@ export async function getTempActual(idCal:number) {
  
      console.log("5. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
  }
+
+ // -------------------------------------------------- ↓ MIN ↓ --------------------------------------------------
+
+// -------------------- GET min --------------------
+export async function getMin(idCal:number){
+
+     const idDto=calefaccion[idCal].min.id
+ 
+     const minDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+ 
+     const minObtenido=minDB ? Number(minDB.valor) : 0;
+     console.log('Valor actual de min ('+(idCal+1)+') DB: ', minDB, "Valor actual de min ("+(idCal+1)+") Dto: ", calefaccion[idCal].min.valor);
+ 
+     calefaccion[idCal].min.valor=minObtenido;
+ 
+     return calefaccion[idCal].min.valor;
+ }
+ 
+ // -------------------- SET min --------------------
+ export async function setMin(idCal:number, formData: FormData) {
+ 
+     const idDto=calefaccion[idCal].min.id
+     const valor=formData.get('valor');
+ 
+     const minDB = await prisma.parametros.findFirst({where: {id: idDto}});
+     const pkid=minDB?.pkid;
+ 
+     console.log("Min de ", (idCal+1)," antes: ", calefaccion[idCal].min.valor);
+ 
+     //Esto establece el valor en la DB
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+ 
+     //Esto establece el valor en el Dto
+     calefaccion[idCal].min.valor = Number(valor);
+ 
+     console.log("Min de ", (idCal+1)," ahora: ", valor);
+ }
+ 
+ 
+ // -------------------------------------------------- ↓ MAX ↓ --------------------------------------------------
+ 
+ // -------------------- GET max --------------------
+ export async function getMax(idCal:number){
+ 
+      const idDto=calefaccion[idCal].max.id
+ 
+      console.log("1. Aqui tenemos el idDto: ", calefaccion[idCal].max.id)
+ 
+     const maxDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+ 
+     const maxObtenido=maxDB ? Number(maxDB.valor) : 0;
+     console.log('Valor actual de max ('+(idCal+1)+') DB: ', maxDB, "Valor actual de max ("+(idCal+1)+") Dto: ", calefaccion[idCal].max.valor);
+ 
+     calefaccion[idCal].max.valor=maxObtenido;
+ 
+     return calefaccion[idCal].max.valor;
+ }
+ 
+ // -------------------- SET max --------------------
+ export async function setMax(idCal:number, formData: FormData) {
+ 
+     const idDto=calefaccion[idCal].max.id
+     const valor=formData.get('valor');
+ 
+     const maxDB = await prisma.parametros.findFirst({where: {id: idDto}});
+     const pkid=maxDB?.pkid;
+ 
+     console.log("Max de ", (idCal+1)," antes: ", calefaccion[idCal].max.valor);
+ 
+     //Esto establece el valor en la DB
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+ 
+     //Esto establece el valor en el Dto
+     calefaccion[idCal].max.valor = Number(valor);
+ 
+     console.log("Max de ", (idCal+1)," ahora: ", valor);
+ }
+ 
+ // -------------------------------------------------- ↓ RANGO ↓ --------------------------------------------------
+ 
+ // -------------------- GET rango --------------------
+ export async function getRango(idCal:number){
+ 
+      const idDto=calefaccion[idCal].rango.id
+ 
+      console.log("1. Aqui tenemos el idDto: ", calefaccion[idCal].rango.id)
+ 
+     const rangoDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+ 
+     const rangoObtenido=rangoDB ? Number(rangoDB.valor) : 0;
+     console.log('Valor actual de rango ('+(idCal+1)+') DB: ', rangoDB, "Valor actual de rango ("+(idCal+1)+") Dto: ", calefaccion[idCal].rango.valor);
+ 
+     calefaccion[idCal].rango.valor=rangoObtenido;
+ 
+     return calefaccion[idCal].rango.valor; //También podría ser rangoObtenido
+ }
+ 
+ // -------------------- SET rango --------------------
+ export async function setRango(idCal:number, formData: FormData) {
+ 
+     const idDto=calefaccion[idCal].rango.id
+     const valor=formData.get('valor');
+ 
+     const rangoDB = await prisma.parametros.findFirst({where: {id: idDto}});
+     const pkid=rangoDB?.pkid;
+ 
+     console.log("Rango de ", (idCal+1)," antes: ", calefaccion[idCal].rango.valor);
+ 
+     //Esto establece el valor en la DB
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+ 
+     //Esto establece el valor en el Dto
+     calefaccion[idCal].rango.valor = Number(valor);
+ 
+     console.log("Rango de ", (idCal+1)," ahora: ", valor);
+ }

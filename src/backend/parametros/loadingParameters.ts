@@ -27,7 +27,7 @@ export const LoadingAllParams = () => {
           
           loadParam(calefaccion[i].tempSinConectarCR,{tipo:TP.REAL,min:0,max:60.0,valor:25.0,reset:0,tipoImportacion:0,nombre:"1. tempSinConectarCR Cal:"+(i+1)} );
           loadParam(calefaccion[i].offset,{tipo:TP.REAL,min:0,max:20,valor:0,reset:0,tipoImportacion:0,nombre:"2. offset Cal:"+(i+1)});
-          loadParam(calefaccion[i].min,{tipo:TP.INTEGER,min:0,max:100,valor:0,reset:0,tipoImportacion:0,nombre:"3. min Cal:"+(i+1)} );
+          loadParam(calefaccion[i].min,{tipo:TP.INTEGER,min:0,max:100,valor: 0,reset:0,tipoImportacion:0,nombre:"3. min Cal:"+(i+1)} );
           loadParam(calefaccion[i].max,{tipo:TP.INTEGER,min:0,max:100,valor:100,reset:0,tipoImportacion:0,nombre:"4. max Cal:"+(i+1)});
           loadParam(calefaccion[i].rango,{tipo:TP.REAL,min:0,max:15,valor:4.0,reset:0,tipoImportacion:0, nombre:"5. rango Cal:"+(i+1)});
           loadParam(calefaccion[i].configuracion.disponible,{tipo:TP.BOOLEAN,valor:false,reset:0,tipoImportacion:0,nombre:"6. configuracion.disponible Cal:"+(i+1)});
@@ -48,7 +48,6 @@ export const LoadingAllParams = () => {
           loadParam(calefaccion[i].configuracion.passRequerida,{tipo:TP.BOOLEAN,valor:false,reset:0,tipoImportacion:0,nombre:"21. configuracion.passReq Cal:"+(i+1)});
           loadParam(calefaccion[i].configuracion.pass,{tipo:TP.STRING,valor:"",reset:0,tipoImportacion:0,nombre:"22. configuracion.pass Cal:"+(i+1)});
           loadParam(calefaccion[i].tempActual,{tipo:TP.REAL,min:0,max:60.0,valor:15.0,reset:0,tipoImportacion:0,nombre:"23. tempActual Cal:"+(i+1)} );
-
           
           for (let j = 0; j < NUM_CALEFACCIONES; j++) { //En vez de NUM_CALEFACCIONES supongo que sería otra cosa.
                setCounterLevel(2);

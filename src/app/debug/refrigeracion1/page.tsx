@@ -4,13 +4,13 @@ import { getOffset, setOffset, getTempSinConectarCR, setTempSinConectarCR } from
 import { getMax, getMin, getRango, setMax, setMin, setRango } from '@/lib/actionsCalefaccion';
 import React from 'react';
 
-export default function Calefaccion1() {
+export default function Refrigeracion1() {
 
     return (
         <div className='flex flex-col w-200 items-center justify-center gap-2 '>
-            <p className='text-2xl m-5'>Calefaccion 1 INPUTS</p>
+            <p className='text-2xl m-5'>Refrigeracion 1 INPUTS</p>
             <div className='bg-gray-700 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>offset</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>offset CAMBIAR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
@@ -27,7 +27,7 @@ export default function Calefaccion1() {
             </div>
 
             <div className='bg-gray-700 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>tempSinConectarCR</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>tempSinConectarCR CAMBIAR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
@@ -46,7 +46,7 @@ export default function Calefaccion1() {
                         {/* ↓ ↓ ↓ PRUEBA NUEVOS SA PARA MIN, MAX Y RANGO ↓ ↓ ↓ */}
 
             <div className='bg-gradient-to-b from-sky-900 to-red-500 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>↓ min ↓</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>↓ min ↓ CAMBIAR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
@@ -61,7 +61,7 @@ export default function Calefaccion1() {
                     <button type="submit" onClick={async () => {const offset = await getMin(0);}} className='bg-slate-600 rounded-md p-2 hover:text-blue-400'>Print</button>
                 </div>
                 <br /><br />
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>↓ max ↓</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>↓ max ↓ CAMBIAR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
@@ -78,7 +78,7 @@ export default function Calefaccion1() {
             </div>
 
             <div className='bg-blue-900 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>rango</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>rango CAMBIAR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
