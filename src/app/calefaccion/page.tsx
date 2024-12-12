@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Siderbar from '../../../components/siderbar/Siderbar'
 import CalefaccionList from '../../../components/calefaccionlist/Calefaccionlist'

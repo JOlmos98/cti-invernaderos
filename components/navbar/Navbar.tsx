@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
       </div>
       {/* Lado derecho */}
       <div className="flex items-center space-x-6">
-        <Link href="/pruebasBack/about" className="text-white hover:text-gray-300 transition-colors font-medium">
+        <Link href="/debug" className="text-white hover:text-gray-300 transition-colors font-medium">
           Debug
         </Link>
         <button className="text-white hover:text-gray-300 transition-colors">

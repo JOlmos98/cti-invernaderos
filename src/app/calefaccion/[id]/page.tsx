@@ -1,25 +1,49 @@
+'use client'
 
 import { NUM_CALEFACCIONES } from '@/backend/calefaccion/funcionalidad/calefaccion';
 import { notFound } from 'next/navigation';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Siderbar from '../../../../components/siderbar/Siderbar';
 import Navbar from '../../../../components/navbar/Navbar';
 import { FaTemperatureHigh } from 'react-icons/fa';
 import { PiCheckSquareOffsetBold } from 'react-icons/pi';
 import Link from 'next/link';
+import { getOffset, getTempSinConectarCR} from '@/lib/actionsCalefaccion';
+
+
+
 
 export default async function CalefaccionPage({params} : { params : {id: string }}) {
     const { id } = await params; 
     const calId = parseInt(id); 
 
-    // Verifica que el ID sea válido A
-    if (isNaN(calId) || calId < 0 || calId >= NUM_CALEFACCIONES) {
-      return notFound(); 
-    }
-  
+    const [offSet, setOffset] = useState<number | null >(null); 
+    const [tmpConsigna, setTmpConsigna] = useState <number | null>(null);
+
+    useEffect(() => {
+      // Verifica que el ID sea válido  
+      if (isNaN(calId) || calId < 0 || calId >= NUM_CALEFACCIONES) {
+          return notFound();
+      }
+      // implementados una nueva funcion para server action
+      const fetchData = async () => {
+        try{
+          const [offSet, tempConsigna] = await Promise.all([
+            getOffset(calId), 
+            getTempSinConectarCR(calId)
+          ]);  
+          setOffset(offSet);
+          setTmpConsigna(tempConsigna);
+        } catch (error) {
+          console.error("Error al obtener datos de la calefacción", error);
+        }
+      }
+        fetchData();
+    }, [calId]);  // Se actualiza el estado x el id 
+
     const items = [
-      {id: 1, icon: FaTemperatureHigh, name: 'Temperatura de consigna', href: `/calefaccion/${id}/temperaturaDeConsigna`}, 
-      {id: 2, icon: PiCheckSquareOffsetBold, name: 'OffSet Temperatura', href: `/calefaccion/${id}/offSet`} 
+      {id: 1, icon: FaTemperatureHigh, name: `Temperatura de consigna`, href: `/calefaccion/${id}/temperaturaDeConsigna`, calId: calId, valorActual:`${tmpConsigna?.toFixed(1)} ºC`}, 
+      {id: 2, icon: PiCheckSquareOffsetBold, name: `OffSet `, href: `/calefaccion/${id}/offSet`, calId: calId, valorActual:`${offSet?.toFixed(1)} ºC`} 
     ]
     return (
       <div className="min-h-screen">
@@ -46,6 +70,9 @@ export default async function CalefaccionPage({params} : { params : {id: string 
                 {/* Enlace && name */}
                 {item.name}
                 </Link>
+               </div> 
+               <div className='text-green-500'>
+                {item.valorActual}
                </div>
                </li>
              )

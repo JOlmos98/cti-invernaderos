@@ -1,8 +1,8 @@
 "use client"
 import Calefaccion from "@/app/calefaccion/page";
 import React, { useState } from "react";
-import { getOffset, setOffset } from "@/lib/actionsCalefaccion";
-import { Eye } from "lucide-react";
+import { setOffset } from "@/lib/actionsCalefaccion";
+import TecladoNumerico from "../tecladoNumerico/TecladoNumerico";
 
 // ✓ Correcto funcionanmiento de los endpoints
 type OffsetFormProps ={
@@ -25,6 +25,7 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
         } catch (error: any) {
           alert(`Error al establecer el Offset: ${error.message}`);
         }
+       
       }}
       className="space-y-8"
     >
@@ -37,7 +38,7 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
                    focus:ring focus:ring-blue-100 transition-all
                    outline-none text-gray-700 placeholder-gray-400 text-lg"
         />
-        
+       
         <div className="flex gap-4 justify-between mt-5">
         <button
             type="submit"
@@ -48,6 +49,7 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
 
           <button
             type="button"
+            
             onClick={() => {
               const form = document.querySelector('form');
               if (form) {
@@ -57,6 +59,7 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
             className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg"
           >
             Cancelar
+            
           </button>
         </div>
       </div>

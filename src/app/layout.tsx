@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
-import Navbar from "../../components/navbar/Navbar";
 import { encenderOApagarTick } from "@/backend/tick";
 
 const geistSans = localFont({
@@ -29,7 +28,7 @@ export default function RootLayout({
 }>) {
 
     LoadingAllParams();
-    encenderOApagarTick(); //Si se han cargado bien los parámetros, la guarda es igual a true y se enciende.
+   // encenderOApagarTick(); //Si se han cargado bien los parámetros, la guarda es igual a true y se enciende.
 
   return (
     <html lang="en">
@@ -39,6 +38,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster position="top-right" />
+        
         
       </body>
     </html>

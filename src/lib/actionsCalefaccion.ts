@@ -96,7 +96,7 @@ export async function setOffset(idCal:number, formData: FormData) {
      console.log("Offset de ", (idCal+1)," ahora: ", valor);
 }
 
-// -------------------- SET tempSinConectarCR -------------------- YES
+// -------------------- SET tempSinConectarCR -------------------- YES ---> temp de consigna 
 export async function setTempSinConectarCR(idCal:number, formData: FormData) {
 
      const idDto=calefaccion[idCal].tempSinConectarCR.id

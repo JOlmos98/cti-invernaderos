@@ -4,7 +4,6 @@ import { NUM_CALEFACCIONES } from '@/backend/calefaccion/funcionalidad/calefacci
 import Link from 'next/link';
 
 
-
 // Función principal para renderizar la lista de calefacciones
 export default function CalefaccionList() {
   // Creamos dinámicamente la lista de calefacciones
