@@ -14,7 +14,7 @@ import { getOffset, getTempSinConectarCR} from '@/lib/actionsCalefaccion';
 
 
 export default async function CalefaccionPage({params} : { params : {id: string }}) {
-    const { id } = await params; 
+    const { id } = params; 
     const calId = parseInt(id); 
 
     const [offSet, setOffset] = useState<number | null >(null); 
