@@ -3,14 +3,6 @@
 import prisma from "@/lib/prisma";
 import { calefaccion, NUM_CALEFACCIONES } from "../backend/calefaccion/funcionalidad/calefaccion";
 
-// -------------------------------------------------- getDataAll --------------------------------------------------
-export async function getDataAll() {                                        
-     console.log('getData (Imprime la lista entera de parámetros, es decir, la tabla entera de la base de datos)');
-     const params = await prisma.parametros.findMany();
-     console.log('Parámetros: ', params);
-     return params;
-}
-
 // -------------------------------------------------- ↓ GET ↓ --------------------------------------------------
 
 // -------------------- GET offset -------------------- YES 
@@ -160,105 +152,6 @@ export async function setTempSinConectarCRForm(formData: FormData) {
      console.log("4. Aqui el calefaccion.["+idInputNumber+"].tempSinConectarCR.valor es: ", calefaccion[(idInputNumber-1)].tempSinConectarCR.valor);
  }
 
-// -------------------------------------------------------------------------------------------------------------- 
-// -------------------------------------------------------------------------------------------------------------- 
-// -------------------------------------------------- ↓ TICK ↓ --------------------------------------------------
-// -------------------------------------------------------------------------------------------------------------- 
-// -------------------------------------------------------------------------------------------------------------- 
-
-// -------------------- Get para el tick, para asignar en el Dto antes de empezar a aumentar --------------------
-//Este get lo usamos para que en el tick las tempActual no empiecen en 0 y se coja el valor de la base de datos para el Dto.
-
-// -------------------- GET tempActual -------------------- YES
-export async function getTempActual(idCal:number) {
-
-     const idDto=calefaccion[idCal].tempActual.id
-
-     const tempActualDB = await prisma.parametros.findFirst({
-          where: {
-               id: idDto
-          },
-          select: {
-               valor: true
-          }
-     });
-
-     console.log('TempActual DB: ', tempActualDB);
-     return tempActualDB ? Number(tempActualDB.valor) : 0; //Esto es basicamente un if, (if (tempActualDB) return Number(tempActualDB.valor) else return 0)
-}
-
-// -------------------- SET tempActual (form) -------------------- NO
- export async function setTempActualForm(formData: FormData) {
-
-     const idInput=formData.get('id');
-     const valor=formData.get('valor');
-
-     const idInputNumber=Number(idInput);
-     if (idInputNumber<=0 || idInputNumber>NUM_CALEFACCIONES) {
-          console.error("El idInput debe ser mayor que 0 y menor o igual que "+NUM_CALEFACCIONES);
-          return; //Detiene la ejecución de la función
-     }
-
-     const idDto=calefaccion[(idInputNumber-1)].tempActual.id
-
-     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
-     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
-     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos el objeto entero.
- 
-     const pkid=tempActualObject?.pkid;
-     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
-     //Obtenido el pkid mediante el id bigint
-     console.log("3. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
-     await prisma.parametros.update({
-          where: {
-               pkid: pkid
-          },
-          data: {
-               valor: valor as string
-          }
-     })
-     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
-     calefaccion[(idInputNumber-1)].tempActual.valor = Number(valor);
- 
-     console.log("5. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
- }
-
- // -------------------- SET tempActual (tick) -------------------- NO
- export async function setTempActualTick(idCal:number, valorTempActual:number) {
-
-     const idInput=idCal;
-     const valor=valorTempActual.toString();
-
-     const idInputNumber=Number(idInput);
-     if (idInputNumber<0 || idInputNumber>NUM_CALEFACCIONES) {
-          console.error("El idInput debe ser 0 y menor o igual que "+NUM_CALEFACCIONES);
-          return; //Detiene la ejecución de la función
-     }
-
-     const idDto=calefaccion[idInputNumber].tempActual.id
-
-     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
-     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
-     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
- 
-     const pkid=tempActualObject?.pkid;
-     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
-     //Obtenido el pkid mediante el id bigint
-     console.log("3. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
-     await prisma.parametros.update({
-          where: {
-               pkid: pkid
-          },
-          data: {
-               valor: valor as string
-          }
-     })
-     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
-     calefaccion[idInputNumber].tempActual.valor = Number(valor);
- 
-     console.log("5. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
- }
-
  // -------------------------------------------------- ↓ MIN ↓ --------------------------------------------------
 
 // -------------------- GET min --------------------
@@ -309,7 +202,6 @@ export async function getMin(idCal:number){
  
      console.log("Min de ", (idCal+1)," ahora: ", valor);
  }
- 
  
  // -------------------------------------------------- ↓ MAX ↓ --------------------------------------------------
  
@@ -416,3 +308,101 @@ export async function getMin(idCal:number){
  
      console.log("Rango de ", (idCal+1)," ahora: ", valor);
  }
+
+// -------------------------------------------------------------------------------------------------------------- 
+// -------------------------------------------------- ↓ TICK ↓ --------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------- 
+
+// -------------------- Get para el tick, para asignar en el Dto antes de empezar a aumentar --------------------
+//Este get lo usamos para que en el tick las tempActual no empiecen en 0 y se coja el valor de la base de datos para el Dto.
+
+// -------------------- GET tempActual -------------------- YES
+export async function getTempActual(idCal:number) {
+
+     const idDto=calefaccion[idCal].tempActual.id
+
+     const tempActualDB = await prisma.parametros.findFirst({
+          where: {
+               id: idDto
+          },
+          select: {
+               valor: true
+          }
+     });
+
+     console.log('TempActual DB: ', tempActualDB);
+     return tempActualDB ? Number(tempActualDB.valor) : 0; //Esto es basicamente un if, (if (tempActualDB) return Number(tempActualDB.valor) else return 0)
+}
+
+// -------------------- SET tempActual (form) -------------------- NO
+ export async function setTempActualForm(formData: FormData) {
+
+     const idInput=formData.get('id');
+     const valor=formData.get('valor');
+
+     const idInputNumber=Number(idInput);
+     if (idInputNumber<=0 || idInputNumber>NUM_CALEFACCIONES) {
+          console.error("El idInput debe ser mayor que 0 y menor o igual que "+NUM_CALEFACCIONES);
+          return; //Detiene la ejecución de la función
+     }
+
+     const idDto=calefaccion[(idInputNumber-1)].tempActual.id
+
+     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
+     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
+     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos el objeto entero.
+ 
+     const pkid=tempActualObject?.pkid;
+     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
+     //Obtenido el pkid mediante el id bigint
+     console.log("3. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     calefaccion[(idInputNumber-1)].tempActual.valor = Number(valor);
+ 
+     console.log("5. Aqui el calefaccion.["+(idInputNumber-1)+"].tempActual.valor es: ", calefaccion[(idInputNumber-1)].tempActual.valor);
+ }
+
+ // -------------------- SET tempActual (tick) -------------------- NO
+ export async function setTempActualTick(idCal:number, valorTempActual:number) {
+
+     const idInput=idCal;
+     const valor=valorTempActual.toString();
+
+     const idInputNumber=Number(idInput);
+     if (idInputNumber<0 || idInputNumber>NUM_CALEFACCIONES) {
+          console.error("El idInput debe ser 0 y menor o igual que "+NUM_CALEFACCIONES);
+          return; //Detiene la ejecución de la función
+     }
+
+     const idDto=calefaccion[idInputNumber].tempActual.id
+
+     console.log("1. Aqui tenemos el idDto:", idDto, typeof idDto, "Y el valor recibido del form:", valor, typeof valor);
+     //Tenemos que obtener el pkid mediante el id (bigInt) para hacer un update:
+     const tempActualObject = await prisma.parametros.findFirst({where: {id: idDto}}); //Si usasemos select obtendriamos el pkid solo, así obtenemos elobjeto entero.
+ 
+     const pkid=tempActualObject?.pkid;
+     console.log("2. Aqui tenemos el pkid obtenido mediante el id bigint:", pkid, typeof pkid);
+     //Obtenido el pkid mediante el id bigint
+     console.log("3. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+     await prisma.parametros.update({
+          where: {
+               pkid: pkid
+          },
+          data: {
+               valor: valor as string
+          }
+     })
+     console.log("4. Valor tempActual Cal"+idInputNumber+" establecido: ", valor);
+     calefaccion[idInputNumber].tempActual.valor = Number(valor);
+ 
+     console.log("5. Aqui el calefaccion.["+idInputNumber+"].tempActual.valor es: ", calefaccion[idInputNumber].tempActual.valor);
+ }
+

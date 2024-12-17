@@ -1,8 +1,10 @@
 "use client";
 
-import { getOffset, setOffset, getTempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
+import { getOffset, setOffset, getTempSinConectarCR, setTempSinConectarCR } from '@/lib/actionsWIP';
 import { getMax, getMin, getRango, setMax, setMin, setRango } from '@/lib/actionsCalefaccion';
 import React from 'react';
+
+// TODAVIA CON ACTIONS DE CALEFACCION
 
 export default function Refrigeracion1() {
 
@@ -10,7 +12,7 @@ export default function Refrigeracion1() {
         <div className='flex flex-col w-200 items-center justify-center gap-2 '>
             <p className='text-2xl m-5'>Refrigeracion 1 INPUTS</p>
             <div className='bg-gray-700 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>offset CAMBIAR</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>offset</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.
@@ -27,7 +29,7 @@ export default function Refrigeracion1() {
             </div>
 
             <div className='bg-gray-700 rounded-md p-4 mb-3'>
-                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>tempSinConectarCR CAMBIAR</h1>
+                <h1 className='flex flex-col w-200 items-center justify-center font-bold'>tempSinConectarCR</h1>
                 <div className='flex items-center gap-2'>
                     <form onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault(); // Detener el envío predeterminado del formulario.

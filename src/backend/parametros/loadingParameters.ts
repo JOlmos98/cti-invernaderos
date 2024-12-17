@@ -1,5 +1,6 @@
 
 import { calefaccion, NUM_CALEFACCIONES } from "../calefaccion/funcionalidad/calefaccion";
+import { refrigeracion, NUM_REFRIGERACIONES } from "../refrigeracion/funcionalidad/refrigeracion";
 import { globals } from "../globals/globals";
 import { loadParam as loadParam, setCounterLevel } from "./paramLoad";
 import { TP } from './tiposGlobales';
@@ -49,6 +50,15 @@ export const LoadingAllParams = () => {
           loadParam(calefaccion[i].configuracion.pass,{tipo:TP.STRING,valor:"",reset:0,tipoImportacion:0,nombre:"22. configuracion.pass Cal:"+(i+1)});
           loadParam(calefaccion[i].tempActual,{tipo:TP.REAL,min:0,max:60.0,valor:15.0,reset:0,tipoImportacion:0,nombre:"23. tempActual Cal:"+(i+1)} );
           
+          loadParam(refrigeracion[i].tempSinConectarCR,{tipo:TP.REAL,min:0,max:60.0,valor:25.0,reset:0,tipoImportacion:0,nombre:"24. tempSinConectarCR Ref:"+(i+1)} );
+          loadParam(refrigeracion[i].offset,{tipo:TP.REAL,min:0,max:20,valor:0,reset:0,tipoImportacion:0,nombre:"25. offset Ref:"+(i+1)});
+          loadParam(refrigeracion[i].min,{tipo:TP.INTEGER,min:0,max:100,valor: 0,reset:0,tipoImportacion:0,nombre:"26. min Ref:"+(i+1)} );
+          loadParam(refrigeracion[i].max,{tipo:TP.INTEGER,min:0,max:100,valor:100,reset:0,tipoImportacion:0,nombre:"27. max Ref:"+(i+1)});
+          loadParam(refrigeracion[i].rango,{tipo:TP.REAL,min:0,max:15,valor:4.0,reset:0,tipoImportacion:0, nombre:"28. rango Ref:"+(i+1)});
+          loadParam(refrigeracion[i].tempActual,{tipo:TP.REAL,min:0,max:60.0,valor:15.0,reset:0,tipoImportacion:0,nombre:"29. tempActual Ref:"+(i+1)} );
+
+
+
           for (let j = 0; j < NUM_CALEFACCIONES; j++) { //En vez de NUM_CALEFACCIONES supongo que sería otra cosa.
                setCounterLevel(2);
 
@@ -65,13 +75,12 @@ export const LoadingAllParams = () => {
 
                }
           }
-
      }
      setCounterLevel(0);
 
      console.log("Carga de datos finalizada",)
 
-     globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagarlo para el desarrollo
+     //globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagarlo para el desarrollo
 }
 
 

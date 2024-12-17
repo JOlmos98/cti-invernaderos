@@ -5,10 +5,10 @@ import bcrypt from 'bcrypt';
 
 // -------------------------------------------------- getData --------------------------------------------------
 export async function getData() {
-     console.log('getData');
-     const users = await prisma.user.findMany();
-     console.log('Users: ', users);
-     return users;
+  console.log("getData");
+  const users = await prisma.user.findMany();
+  console.log("Users: ", users);
+  return users;
 }
 
 // -------------------------------------------------- setData --------------------------------------------------
@@ -34,23 +34,28 @@ export const setData = async (formData: FormData) => {
 
 // -------------------------------------------------- delData --------------------------------------------------
 export const delData = async (formData: FormData) => {
-     const id = formData.get('id');
-     const idx = Number(id);
-     const userExists = await prisma.user.findUnique({ where: { id: idx } });
-     
-     if (!userExists) {
-          console.error('EL USUARIO "', id, '" NO EXISTE.');
-     } else {
-          try{
-               const response = await prisma.user.delete({
-                    where: {
-                        id: idx,
-                    },
-                });
-                console.log("Usuario", idx, "eliminado correctamente");
-               } catch (error) { console.error('Error al eliminar usuario: Probablemente no existe el usuario o es NaN.', error);}
-          };
-     }
+  const id = formData.get("id");
+  const idx = Number(id);
+  const userExists = await prisma.user.findUnique({ where: { id: idx } });
+
+  if (!userExists) {
+    console.error('EL USUARIO "', id, '" NO EXISTE.');
+  } else {
+    try {
+      const response = await prisma.user.delete({
+        where: {
+          id: idx,
+        },
+      });
+      console.log("Usuario", idx, "eliminado correctamente");
+    } catch (error) {
+      console.error(
+        "Error al eliminar usuario: Probablemente no existe el usuario o es NaN.",
+        error
+      );
+    }
+  }
+};
 
 // -------------------------------------------------- verifyUser --------------------------------------------------
 export const verifyUser = async (formData: FormData) => {
