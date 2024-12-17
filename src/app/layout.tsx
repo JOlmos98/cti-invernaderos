@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
 import { encenderOApagarTick } from "@/backend/tick";
 import Navbar from "../../components/navbar/Navbar";
+import { Sidebar } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,9 +28,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
+  //Mostrar ocultar siderbar
   const toggleSidebar = () => {
-    console.log('Sidebar toggled'); // Esto se implementará en el futuro
+    setIsSidebarVisible((prev) => !prev);
   };
   // Guarda si se han cargado bien los parámetros
     LoadingAllParams();
@@ -43,10 +46,11 @@ export default function RootLayout({
       >
         {children}
           {/* Navbar siempre visible */}
-          <Navbar currentPage="Controlador Clima" toggleSidebar={toggleSidebar} />
+          <Navbar currentPage="Home" toggleSidebar={toggleSidebar}   />
 
-          {/* Contenedor principal con margen para no solaparse con el Navbar */}
-          <main className="mt-12">
+          {isSidebarVisible && <Sidebar />} 
+          
+          <main className={`mt-12 ${isSidebarVisible ? 'ml-72' : ''}`}>
           {children}
           </main>
 

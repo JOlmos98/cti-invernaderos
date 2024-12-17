@@ -1,8 +1,7 @@
-'use client'
+
 
 import { NUM_CALEFACCIONES } from '@/backend/calefaccion/funcionalidad/calefaccion';
 import { notFound } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
 import Siderbar from '../../../../components/siderbar/Siderbar';
 import Navbar from '../../../../components/navbar/Navbar';
 import { FaTemperatureHigh } from 'react-icons/fa';
