@@ -1,6 +1,4 @@
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
-import { BsFire } from "react-icons/bs";
 import NavLinks from "./navLinks";
 
 const Siderbar = () => {

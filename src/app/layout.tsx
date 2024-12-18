@@ -4,8 +4,9 @@ import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
 import { encenderOApagarTick } from "@/backend/tick";
-import Navbar from "../../components/navbar/Navbar";
-import { Sidebar } from "lucide-react";
+import { Layout } from "lucide-react";
+import LayoutWrapper from "./layoutWrapper";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,36 +24,23 @@ export const metadata: Metadata = {
   description: "Aplicacion controlador clima",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-
-  //Mostrar ocultar siderbar
-  const toggleSidebar = () => {
-    setIsSidebarVisible((prev) => !prev);
-  };
+export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+  
   // Guarda si se han cargado bien los parámetros
     LoadingAllParams();
    // encenderOApagarTick(); //Si se han cargado bien los parámetros, la guarda es igual a true y se enciende.
 
   return (
     <html lang="en">
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-          {/* Navbar siempre visible */}
-          <Navbar currentPage="Home" toggleSidebar={toggleSidebar}   />
-
-          {isSidebarVisible && <Sidebar />} 
+          {/* Layout responsive Client Comp */}
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
           
-          <main className={`mt-12 ${isSidebarVisible ? 'ml-72' : ''}`}>
-          {children}
-          </main>
+          
 
           {/* Notificaciones */}
           <Toaster position="top-right" />

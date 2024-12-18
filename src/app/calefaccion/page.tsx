@@ -6,9 +6,7 @@ import TemperaturaActual from '../../../components/temperaturaActual / Temperatu
 
 export default function Calefaccion() {
   return (
-    <div className='min-h-screen '> 
-             < Siderbar /> 
-             {/* contenido   */}
+    
          <div className='p-4 ml-72'> {/* paddig */}
             <header className='bg-gray-900 text-white text-2xl px-4 py-6 rounded-md shadow-md mb-6 flex flex-col items-center justify-center'> 
               <h1> Calefacciones </h1>
@@ -29,11 +27,10 @@ export default function Calefaccion() {
           < TemperaturaActual />
         </div>
         <div className="mt-8 border-t border-gray-700 pt-4 text-center text-white">
-          <p>&copy; {new Date().getFullYear()} CTIControl. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CTIControl. </p>
         </div>
       </div>
     </footer>
          </div>
-        </div >
   )
 }
