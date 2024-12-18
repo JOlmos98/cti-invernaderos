@@ -22,8 +22,10 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
         const formData = new FormData(event.currentTarget);
         try {
           await setOffset(id, formData);  // Server Action => actualizar el valor offset
-        } catch (error: any) {
-          alert(`Error al establecer el Offset: ${error.message}`);
+        } catch (error: unknown) {
+          if (error instanceof Error){
+            alert(`Error al establecerse el Offset: ${error.message}`); 
+          } 
         }
        
       }}

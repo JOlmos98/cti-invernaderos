@@ -14,23 +14,11 @@ export default async function OffSetPage({params}:{params:{ id:string}}) {
   console.log("id:", idNum, "Tipo:", typeof idNum); 
 
   return (
-    <div className="min-h-screen">
-    <Navbar />
-
-    <div className="flex"> 
-      <Siderbar />
-
-      {/* Contenido principal */}
-      <main className="flex-1 ml-72 mt-12 p-4"> 
-      <h1 className='text-2xl font-bold text-center bg-gray-800 text-white py-4'> OffSet Configuración </h1>
+     <div> 
+      <h1 className='text-3xl font-bold text-center bg-gray-800 text-white py-4 rounded-md shadow-md'> OffSet Configuración </h1>
        <div className='min-h-screen  bg-gray-100 flex items-center justify-center'> 
         < InputForm id = {idNum} />           
        </div>
-       <div> 
-        
-       </div>
-      </main>
-     </div>
-    </div>
+      </div>
   )
 }
