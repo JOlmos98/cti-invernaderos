@@ -11,16 +11,6 @@ export enum TP  {
      LIST,     
 } 
 
-//Así funciona internamente el enum:
-// INTEGER=0;
-// REAL=1;
-// STRING=2;
-// BOOLEAN=3;
-// DATE=4;
-// TIME=5;
-// DATETIME=6;
-// LIST=7;
-
 //Tipos de parámetros
 export interface IParam {
      id:bigint, //bigint = long, double, int...
@@ -33,7 +23,6 @@ export interface IParam {
      nombre:string
 }
 
-//Estas dos interfaces no son valor:number ni tienen max y min, el resto de info es igual
 export interface BParam {
      id:bigint,
      tipo:TP,
@@ -51,3 +40,5 @@ export interface SParam {
      tipoImportacion:number,
      nombre:string
 }
+
+//Estas dos últimas interfaces no son valor:number ni tienen max y min, el resto de info es igual
