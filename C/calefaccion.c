@@ -6,11 +6,13 @@
 /********************************************************************************/
 //ST_calefaccion_comun st_calefaccion_comun;
 
+
 //fun locales
 void cal_local_influencia_humedad(ST_calefaccion *cal);
 void cal_local_calcula_estados_calefaccion(ST_calefaccion *cal);
 void cal_local_calcula_sal_010(ST_calefaccion *cal);
 void cal_local_valvula_3_vias_tick(ST_calefaccion *cal);
+
 
 /** Inicio de la estructura ventilacion *****************************************/
 

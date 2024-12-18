@@ -54,16 +54,16 @@ typedef struct
 
 	//influencia humedad
 
-  	puint8 influ_hum_off_on;					//configura si activamos o desactivamos la influencia
+  	puint8 influ_hum_off_on;				//configura si activamos o desactivamos la influencia
 
-	puint8 influ_hum_init;						//humedad inicio influencia
-	puint8 influ_hum_fin;						//humedad fin influencia
+	puint8 influ_hum_init;			//humedad inicio influencia
+	puint8 influ_hum_fin;			//humedad fin influencia
 
-	uint8_t cal_influ_hum_init;					//calculador humedad init
-	uint8_t cal_influ_hum_fin;					//calculo humedad fin
+	uint8_t cal_influ_hum_init;			//calculador humedad init
+	uint8_t cal_influ_hum_fin;			//calculo humedad fin
 
-	pfloat influ_hum_incremento_temperatura; 	//indicamos el incremento que queremos realizar en la influencia
-	float correccion_calefac_des_por_humedad;	//indica la correccion que se tiene que realizar sobre la temperatura deseada de calefaccion cuando esta la influencia activa
+	pfloat influ_hum_incremento_temperatura;	//indicamos el incremento que queremos realizar en
+	float correccion_calefac_des_por_humedad;//indica la correccion que se tiene que realizar sobre la temperatura deseada de calefaccion cuando esta la influencia activa
 
 
 }ST_CAL_influ_humedad;
