@@ -6,6 +6,7 @@
 */
 
 export const globals ={
-     loadedParameters: false, //Para que no se carguen los parámetros en cada "refresh" y sólo lo haga al inicio.
-     guardaParametrosTick: false, //Para que arranque el tick una vez cargados los parámetros.
+     loadedParameters: false,      //Para que no se carguen los parámetros en cada "refresh" y sólo lo haga al inicio.
+     guardaParametrosTick: false,  //Para que arranque el tick una vez cargados los parámetros.
+     tickEncendido: false,         //Para que no se "encienda" una y otra vez cada "refresh" y sólo lo haga al inicio.
 }

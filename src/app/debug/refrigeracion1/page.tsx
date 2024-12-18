@@ -1,23 +1,22 @@
 "use client";
 
-import { getOffset, setOffset, getTempSinConectarCR, setTempSinConectarCR, getMin, setMin, getMax, setMax, getRango, setRango, getTempActual } from '@/lib/actionsWIP';
+import { getOffset, setOffset, getTempSinConectarCR, setTempSinConectarCR, getMin, setMin, getMax, setMax, getRango, setRango, getTempActual } from '@/lib/actionsRefrigeracion';
 import React, { useEffect, useState } from 'react';
 
 export default function Refrigeracion1() {
 
     // ---------- useState y useEffect para mostrar tempActual ----------
 
-    // Estado para almacenar el valor de tempActual
-    const [tempActual, setTempActual] = useState<number | null>(null);
+    const [tempActual, setTempActual] = useState<number | null>(null); // Estado para almacenar el valor de tempActual
 
-    // Llamada inicial para obtener el valor de tempActual
-    useEffect(() => {
+
+    useEffect(() => {                               // Llamada inicial para obtener el valor de tempActual
         const fetchTempActual = async () => {
-            const temp = await getTempActual(0); // Llamar a la server action
-            setTempActual(temp); // Actualizar el estado
+            const temp = await getTempActual(0);    // Llamar a la server action, por esto se imprime por consola el tempActual simplemente al entrar a la página.
+            setTempActual(temp);                    // Actualizar el estado
         };
         fetchTempActual();
-    }, []); // El array vacío asegura que se llama solo una vez al montar el componente.
+    }, []);                                         // El array vacío asegura que se llama solo una vez al montar el componente.
 
     // ---------- useState y useEffect para mostrar tempActual ----------
 

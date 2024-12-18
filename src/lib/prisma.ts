@@ -1,4 +1,3 @@
-import { LoadingAllParams } from '@/backend/parametros/loadingParameters';
 import { PrismaClient } from '@prisma/client'
 
 const prismaClientSingleton = () => {
