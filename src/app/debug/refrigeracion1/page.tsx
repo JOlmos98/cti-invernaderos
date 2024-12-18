@@ -9,7 +9,6 @@ export default function Refrigeracion1() {
 
     const [tempActual, setTempActual] = useState<number | null>(null); // Estado para almacenar el valor de tempActual
 
-
     useEffect(() => {                               // Llamada inicial para obtener el valor de tempActual
         const fetchTempActual = async () => {
             const temp = await getTempActual(0);    // Llamar a la server action, por esto se imprime por consola el tempActual simplemente al entrar a la página.
