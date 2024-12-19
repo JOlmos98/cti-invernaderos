@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function Refrigeracion1() {
 
-    // ---------- useState y useEffect para mostrar tempActual ----------
+    // ---------- ↓ useState y useEffect para mostrar tempActual ↓ ----------
 
     const [tempActual, setTempActual] = useState<number | null>(null); // Estado para almacenar el valor de tempActual
 
@@ -17,7 +17,7 @@ export default function Refrigeracion1() {
         fetchTempActual();
     }, []);                                         // El array vacío asegura que se llama solo una vez al montar el componente.
 
-    // ---------- useState y useEffect para mostrar tempActual ----------
+    // ---------- ↑ useState y useEffect para mostrar tempActual ↑ ----------
 
     return (
         <div className='flex flex-col w-200 items-center justify-center gap-1'>
