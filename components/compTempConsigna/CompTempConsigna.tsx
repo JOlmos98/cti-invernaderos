@@ -1,4 +1,5 @@
 'use client';
+import { calefaccion } from '@/backend/calefaccion/funcionalidad/calefaccion';
 import { getTempSinConectarCR, setOffset, setTempSinConectarCR } from '@/lib/actionsCalefaccion';
 import { useRouter } from 'next/navigation';
 
@@ -10,9 +11,11 @@ type TempConsignaProps ={
   id:number;
 }
 
-const CompTempConsigna: React.FC <TempConsignaProps> = ({id}) => {
+const CompTempConsigna: React.FC <TempConsignaProps> = ({ id }) => {
     const formRef = useRef<HTMLFormElement>(null);
     
+    console.log(calefaccion[0].tempSinConectarCR.max); 
+    console.log(calefaccion[0].tempSinConectarCR.min); 
 
    return (
     <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-md">

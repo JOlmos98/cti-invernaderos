@@ -2,16 +2,20 @@
 
 import { setTempSinConectarCR } from "@/lib/actionsCalefaccion";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { LuCheck, LuX } from "react-icons/lu";
 
 
 
-type TempConsignaHeaderProps ={
-  id:number;
-}; 
+type TempConsignaProps ={
+    id:number;
+    minValor: number; 
+    maxValor: number;
+  }
 
-const TempConsignaHeader: React.FC <TempConsignaHeaderProps> = ({id}) => {
+const TempConsignaHeader: React.FC <TempConsignaProps> = ({id, minValor, maxValor}) => {
     const router = useRouter();
+    
 
     const handleConfirm = async () => {
     const form = document.querySelector<HTMLFormElement>('form');
@@ -20,8 +24,8 @@ const TempConsignaHeader: React.FC <TempConsignaHeaderProps> = ({id}) => {
       const valor = Number(formData.get('valor'));
 
       // Validar formulario
-      if (!valor || valor <= 0) {
-        alert('Por favor, ingrese un valor válido para el Offset.');
+      if (!valor || valor <= minValor || valor >= maxValor) {
+        alert(`El valor debe estar entre ${minValor} && ${maxValor}`);
         return;
       }
 
