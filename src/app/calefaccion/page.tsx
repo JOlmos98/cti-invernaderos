@@ -6,10 +6,10 @@ import TemperaturaActual from '../../../components/temperaturaActual / Temperatu
 export default function Calefaccion() {
   return (
     <div> 
-      <header className='bg-gray-900 text-white text-2xl px-4 py-6 rounded-md shadow-md mb-6 flex flex-col items-center justify-center'>
+      <header className='text-3xl font-bold text-center bg-gray-800 text-white py-4 rounded-md shadow-md'>
         <h1> Calefacciones </h1>
       </header>
-      <main className='h-full'>
+      <main className='h-full pt-3'>
         {/* El contenido de mi pagina */}
         <CalefaccionList />
       </main>

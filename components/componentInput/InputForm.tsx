@@ -1,6 +1,7 @@
 "use client"
+
 import Calefaccion from "@/app/calefaccion/page";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { setOffset } from "@/lib/actionsCalefaccion";
 import TecladoNumerico from "../tecladoNumerico/TecladoNumerico";
 
@@ -10,28 +11,15 @@ type OffsetFormProps ={
 }
 
 const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
+  const formRef = useRef<HTMLFormElement>(null); 
+
   return (
     <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-md">
-    <h2 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
-      Offset de Calefacción {id + 1}
-    </h2>
+    
 
     <form
-      onSubmit={async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        try {
-          await setOffset(id, formData);  // Server Action => actualizar el valor offset
-        } catch (error: unknown) {
-          if (error instanceof Error){
-            alert(`Error al establecerse el Offset: ${error.message}`); 
-          } 
-        }
-       
-      }}
-      className="space-y-8"
-    >
-      <div className="space-y-4">
+      ref={formRef} className="space-y-4" >
+      <div className="text-2xl font-semibold text-gray-900 mb-4 text-center"> Offset de Calefacción </div>
         <input
           type="number"
           name="valor"
@@ -40,31 +28,6 @@ const OffsetForm: React.FC<OffsetFormProps> = ({ id }) => {
                    focus:ring focus:ring-blue-100 transition-all
                    outline-none text-gray-700 placeholder-gray-400 text-lg"
         />
-       
-        <div className="flex gap-4 justify-between mt-5">
-        <button
-            type="submit"
-            className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg"
-          >
-            Establecer
-          </button>
-
-          <button
-            type="button"
-            
-            onClick={() => {
-              const form = document.querySelector('form');
-              if (form) {
-                form.reset();  // Resetea el formulario
-              }
-            }}
-            className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg"
-          >
-            Cancelar
-            
-          </button>
-        </div>
-      </div>
     </form>
   </div>
   );

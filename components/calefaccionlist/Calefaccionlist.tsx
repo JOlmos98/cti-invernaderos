@@ -1,6 +1,6 @@
 'use client';
 
-import { NUM_CALEFACCIONES } from '@/backend/calefaccion/funcionalidad/calefaccion';
+import { calefaccion, NUM_CALEFACCIONES } from '@/backend/calefaccion/funcionalidad/calefaccion';
 import Link from 'next/link';
 
 

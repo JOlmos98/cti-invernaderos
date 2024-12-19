@@ -1,5 +1,5 @@
 import React from 'react'
-import Siderbar from '../../../components/siderbar/Siderbar';
+
 
 {/* !! Cunado haces un componente lo tienes que exportar en index y le tienes que añadir a tailwind.config.ts !! */}
 export default function MenuPage() {
