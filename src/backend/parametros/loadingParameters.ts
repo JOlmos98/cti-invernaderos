@@ -14,11 +14,9 @@ import { TP } from './tiposGlobales';
 */
 
 export const LoadingAllParams = () => { 
-     //Proteccion para que no se vuelva a ejecutar en el inicio
 
      if (globals.loadedParameters) 
           return; //Si es true, detenemos el arranque (por defecto al inicio será false).
-
      globals.loadedParameters = true;
      
      console.log("Cargando...");
@@ -80,7 +78,7 @@ export const LoadingAllParams = () => {
 
      console.log("Carga de datos finalizada",)
 
-     //globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagarlo para el desarrollo
+     globals.guardaParametrosTick=true; //Comentaremos esta línea si queremos apagar el tick para el desarrollo
 }
 
 

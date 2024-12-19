@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import { LoadingAllParams } from "@/backend/parametros/loadingParameters";
 import Navbar from "../../components/navbar/Navbar";
-import { encenderOApagarTick } from "@/backend/tick";
+import { encenderOApagarTick } from "@/backend/tickGeneral";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

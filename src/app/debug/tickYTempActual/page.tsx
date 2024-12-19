@@ -1,6 +1,6 @@
 "use client";
 
-import { encenderOApagarTick  } from "@/backend/tick";
+import { encenderOApagarTick  } from "@/backend/tickGeneral";
 import { setTempActualForm } from "@/lib/actionsCalefaccion";
 
 export default function Parametros(){
